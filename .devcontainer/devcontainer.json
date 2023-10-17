@@ -1,0 +1,49 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+  "name": "Ubuntu",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/javascript-node",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/act:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+		"budparr.language-hugo-vscode",
+		"tamasfe.even-better-toml",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"bradlc.vscode-tailwindcss",
+		"bourhaouta.tailwindshades",
+		"austenc.tailwind-docs",
+		"GitHub.copilot",
+		"GitHub.copilot-chat",
+		"github.vscode-github-actions",
+		"ms-vscode.makefile-tools",
+		"vscodevim.vim",
+		"ms-vscode-remote.remote-containers"
+	]
+    },
+    "codespaces": {
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2
+  },
+  "waitFor": "onCreateCommand",
+  "onCreateCommand": "bash .devcontainer/setup.sh",
+  "updateContentCommand": "",
+  "postCreateCommand": "",
+  "postAttachCommand": {
+    "server": "source /etc/environment && yarn dev"
+  },
+
+  "portsAttributes": {
+    "1313": {
+      "label": "Hugo Blog",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [1313]
+}
