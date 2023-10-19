@@ -10,23 +10,22 @@
   "customizations": {
     "vscode": {
       "extensions": [
-		"budparr.language-hugo-vscode",
-		"tamasfe.even-better-toml",
-		"esbenp.prettier-vscode",
-		"dbaeumer.vscode-eslint",
-		"bradlc.vscode-tailwindcss",
-		"bourhaouta.tailwindshades",
-		"austenc.tailwind-docs",
-		"GitHub.copilot",
-		"GitHub.copilot-chat",
-		"github.vscode-github-actions",
-		"ms-vscode.makefile-tools",
-		"vscodevim.vim",
-		"ms-vscode-remote.remote-containers"
-	]
+        "budparr.language-hugo-vscode",
+        "tamasfe.even-better-toml",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "bourhaouta.tailwindshades",
+        "austenc.tailwind-docs",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "github.vscode-github-actions",
+        "ms-vscode.makefile-tools",
+        "vscodevim.vim",
+        "ms-vscode-remote.remote-containers"
+      ]
     },
-    "codespaces": {
-    }
+    "codespaces": {}
   },
   "hostRequirements": {
     "cpus": 2
@@ -36,7 +35,7 @@
   "updateContentCommand": "",
   "postCreateCommand": "",
   "postAttachCommand": {
-    "server": "source /etc/environment && yarn dev"
+    "server": "source /etc/environment && hugo server"
   },
 
   "portsAttributes": {

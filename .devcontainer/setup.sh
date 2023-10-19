@@ -18,5 +18,4 @@ source ~/.bashrc
 go version
 popd
 hugo version
-yarn project-setup
 yarn install
