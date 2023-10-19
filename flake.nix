@@ -15,15 +15,15 @@
 
       ];
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
+      perSystem = { config, self', inputs', pkgs, system, ... }: 
+      {
         # Per-system attributes can be defined here. The self' and inputs'
         # module parameters provide easy access to attributes of the same
         # system.
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
-        # packages.default = pkgs.hello;
         devShells.default = pkgs.mkShell {
-          buildInputs = [ pkgs.hugo pkgs.yarn pkgs.go_1_21 ];
+          nativeBuildInputs = [ pkgs.hugo pkgs.yarn pkgs.go_1_21 pkgs.nodePackages.postcss pkgs.nodePackages.postcss-cli pkgs.nodejs_18 pkgs.nodePackages.autoprefixer];
         }; 
       };
       flake = {
