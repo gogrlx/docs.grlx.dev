@@ -14,3 +14,5 @@ path = "github.com/google/docsy/dependencies"
   [markup.highlight]
       # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
       style = "catppuccin-latte"
+[params.ui]
+sidebar_menu_foldable = true
