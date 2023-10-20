@@ -16,3 +16,13 @@ path = "github.com/google/docsy/dependencies"
       style = "catppuccin-latte"
 [params.ui]
 sidebar_menu_foldable = true
+[[params.links.user]]
+  name ="Twitter"
+  url = "https://x.com/gogrlx"
+  icon = "fab fa-twitter"
+  desc = "Follow us on Twitter to get the latest news!"
+[[params.links.user]]
+  name = "GitHub"
+  url = "https://github.com/gogrlx/grlx"
+  icon = "fab fa-github"
+  desc = "Development takes place here!"
