@@ -1,22 +1,22 @@
 ---
 title: grlx.ingredients.file
 ---
-## file.absent
+## **file.absent**
 Deletes a file or directory
-### Parameters
+##### Parameters
 * _name_ (string,required): the name/path of the file to delete
-### Example
+##### Example
 ```yaml
 file.absent:
     name: ~/.config/sytemd/user/backup.service
 ```
 
-## file.append
+## **file.append**
 Appends content to a file. Only appends the content if it doesn't exist.
-### Parameters
+#### Parameters
 * _name_ (string,required): the name/path of the file to delete
 * _text_ (string,required): the text to append to a file
-### Example
+#### Example
 ```yaml
 file.append:
   - name: /etc/profile
@@ -24,9 +24,9 @@ file.append:
       export PATH=$PATH:/usr/local/go/bin
 ```
 
-## file.contains
+## **file.contains**
 Checks if a file contains a given selection. If multiple sources are provided, all must be satisfied.
-### Parameters
+#### Parameters
 * _name_ (string,required): the name/path of the file to check
 * _text_ (string): the item to search for
 * _source_ (string): a file source (such as HTTP, file, etc.) to reference
@@ -36,9 +36,9 @@ Checks if a file contains a given selection. If multiple sources are provided, a
 * _skip_verify_ (boolean): whether to skip hash validation, false by default
 
 
-## file.directory
+## **file.directory**
 Handles many directory operations. Ensures that a directory exists with the given permissions.
-### Parameters
+#### Parameters
 * _name_ (string,required): the name/path of the directory
 * _makedirs_ (bool): option to make directory if it doesn't exist, defaults to true
 * _user_ (string): the user who will own the directory
@@ -46,5 +46,23 @@ Handles many directory operations. Ensures that a directory exists with the give
 * _dir_mode_ (string): the directory mode
 * _file_mode_ (string): the file mode to set
 * _recurse_ (bool): whether to recurse the directories and apply permissions
-### Example
 
+## **file.exists**
+Checks if a file exists.
+#### Parameters
+* _name_ (string,required): the name/path of the file
+#### Examples
+```yaml
+file.exists:
+    - name: /tmp/exists
+```
+
+## **file.missing**
+Checks if a file is missing.
+#### Parameters
+* _name_ (string,required): the name/path of the file
+#### Examples
+```yaml
+file.missing:
+    - name: /tmp/missing
+```
