@@ -5,13 +5,13 @@
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/javascript-node",
   "features": {
-    "ghcr.io/devcontainers-contrib/features/act:1": {}
+    "ghcr.io/devcontainers-contrib/features/act:1": {},
+    "ghcr.io/devcontainers/features/git-lfs": {}
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "budparr.language-hugo-vscode",
-        "tamasfe.even-better-toml",
+        "astro-build.astro-vscode",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
         "bradlc.vscode-tailwindcss",
@@ -35,14 +35,14 @@
   "updateContentCommand": "",
   "postCreateCommand": "",
   "postAttachCommand": {
-    "server": "source /etc/environment && hugo server"
+    "server": "source /etc/environment && npm run dev"
   },
 
   "portsAttributes": {
-    "1313": {
-      "label": "Hugo Blog",
+    "4321": {
+      "label": "Astro Dev Server",
       "onAutoForward": "openPreview"
     }
   },
-  "forwardPorts": [1313]
+  "forwardPorts": [4321]
 }
