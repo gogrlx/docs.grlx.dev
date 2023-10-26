@@ -46,13 +46,31 @@ file.cached:
 ```
 
 ## **file.content**
-TODO
+Copies content into a given file
 #### Parameters
 | parameter | type | required | description |
 |-----------|------|----------|-------------|
+| _name_ | string | yes | the name of the file to add content to 
+| _makedirs_ | bool | no | whether or not to create parent directories for the file
+| _skip_verify_ | bool | no | whether to skip the verification of the source hash
+| _source_ | string | no | the source to copy content for
+| _hash_ | string | no | the hash for the source 
+| _sources_ | list | no | a list of sources to to copy content for
+| _hash_sources_ | string | no | a list of hashes for the provided sources
+| _text_ | string | no | the text to copy into a file
 #### Example
 ```yaml
 file.content:
+    - name: /srv/ngnix/nginx.conf
+    - makdirs: true
+    - text: |
+        server {
+            listen 8080;
+            root /data/up1;
+
+            location / {
+            }
+        }
 ```
 
 ## **file.contains**
