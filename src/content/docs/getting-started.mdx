@@ -13,19 +13,51 @@ Use our bootstrap scripts! Follow our Quick Start to get started!
 1. Download and initialize the command line utility from our releases to your dev machine.
 <Tabs>
     <TabItem label="Linux">
-    ```bash
-    curl -L https://releases.grlx.dev/linux/amd64/latest/grlx > grlx && chmod +x grlx
-    ./grlx init
-    ```
+        <Tabs>
+            <TabItem label=" x86_64">
+            ```bash
+            curl -L https://releases.grlx.dev/linux/amd64/latest/grlx > grlx && chmod +x grlx
+            ./grlx init
+            ```
+            </TabItem>
+            <TabItem label=" i386">
+            ```bash
+            curl -L https://releases.grlx.dev/linux/368/latest/grlx > grlx && chmod +x grlx
+            ./grlx init
+            ```
+            </TabItem>
+            <TabItem label=" arm">
+            ```bash
+            curl -L https://releases.grlx.dev/linux/arm/latest/grlx > grlx && chmod +x grlx
+            ./grlx init
+            ```
+            </TabItem>
+            <TabItem label=" arm64">
+            ```bash
+            curl -L https://releases.grlx.dev/linux/arm64/latest/grlx > grlx && chmod +x grlx
+            ./grlx init
+            ```
+            </TabItem>
+        </Tabs>
     </TabItem>
-
-    <TabItem label="MacOS">
-    ```bash
-    curl -L https://releases.grlx.dev/darwin/amd64/latest/grlx > grlx && chmod +x grlx
-    ./grlx init
-    ```
+    <TabItem label="macOS">
+        <Tabs>
+            <TabItem label=" x86_64">
+            ```bash
+            curl -L https://releases.grlx.dev/darwin/amd64/latest/grlx > grlx && chmod +x grlx
+            ./grlx init
+            ```
+            </TabItem>
+            <TabItem label=" arm64">
+            ```bash
+            curl -L https://releases.grlx.dev/darwin/arm64/latest/grlx > grlx && chmod +x grlx
+            ./grlx init
+            ```
+            </TabItem>
+        </Tabs>
     </TabItem>
 </Tabs>
+
 You'll be asked some questions, such as which interface the `farmer` is listening on, and which ports to use for communication.
 Set the interface to the domain name or IP address of the `farmer`.
 Once configured, the CLI prints out your administrator public key, which you'll need for the next step!
