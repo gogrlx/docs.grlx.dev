@@ -50,14 +50,14 @@ Copies content into a given file
 #### Parameters
 | parameter | type | required | description |
 |-----------|------|----------|-------------|
-| _name_ | string | yes | the name of the file to add content to 
-| _makedirs_ | bool | no | whether or not to create parent directories for the file
-| _skip_verify_ | bool | no | whether to skip the verification of the source hash
-| _source_ | string | no | the source to copy content for
-| _hash_ | string | no | the hash for the source 
-| _sources_ | list | no | a list of sources to to copy content for
-| _hash_sources_ | string | no | a list of hashes for the provided sources
-| _text_ | string | no | the text to copy into a file
+| _name_ | string | yes | Represents the name of a file or directory
+| _makedirs_ | bool   | no (default: `false`) | Determines whether directories should be created if they don't exist
+| _skip_verify_ | bool   | no (default: `false`) | Determines whether certain verifications should be skipped
+| _source_ | string | no (if `skip_verify` is `false`) | Represents a source file's path or name
+| _source_hash_ | string | conditional (if `source` is provided) | Represents the hash of a source file, used for verification
+| _text_ | string/list | no | Represents the content of a file. Can be a single string or a list of items
+| _sources_ | list   | no (but required if `source_hashes` is provided) | Represents multiple source files
+| _source_hashes_ | list   | Conditionally | Represents the hashes for the multiple source files mentioned in `sources`
 #### Example
 ```yaml
 file.content:
