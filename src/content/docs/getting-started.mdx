@@ -10,29 +10,30 @@ Use our bootstrap scripts! Follow our Quick Start to get started!
 
 ## Quick Start
 
-1. Download and initialize the command line utility from our releases to your dev machine.
+### 1. Download and initialize the CLI
+Install the CLI on your development machine with the correct command for your architecture:
 <Tabs>
     <TabItem label="Linux">
         <Tabs>
-            <TabItem label=" x86_64">
+            <TabItem label="x86_64">
             ```bash
             curl -L https://releases.grlx.dev/linux/amd64/latest/grlx > grlx && chmod +x grlx
             ./grlx init
             ```
             </TabItem>
-            <TabItem label=" i386">
+            <TabItem label="i386">
             ```bash
             curl -L https://releases.grlx.dev/linux/368/latest/grlx > grlx && chmod +x grlx
             ./grlx init
             ```
             </TabItem>
-            <TabItem label=" arm">
+            <TabItem label="arm">
             ```bash
             curl -L https://releases.grlx.dev/linux/arm/latest/grlx > grlx && chmod +x grlx
             ./grlx init
             ```
             </TabItem>
-            <TabItem label=" arm64">
+            <TabItem label="arm64">
             ```bash
             curl -L https://releases.grlx.dev/linux/arm64/latest/grlx > grlx && chmod +x grlx
             ./grlx init
@@ -42,13 +43,13 @@ Use our bootstrap scripts! Follow our Quick Start to get started!
     </TabItem>
     <TabItem label="macOS">
         <Tabs>
-            <TabItem label=" x86_64">
+            <TabItem label="x86_64">
             ```bash
             curl -L https://releases.grlx.dev/darwin/amd64/latest/grlx > grlx && chmod +x grlx
             ./grlx init
             ```
             </TabItem>
-            <TabItem label=" arm64">
+            <TabItem label="arm64">
             ```bash
             curl -L https://releases.grlx.dev/darwin/arm64/latest/grlx > grlx && chmod +x grlx
             ./grlx init
@@ -63,17 +64,97 @@ Set the interface to the domain name or IP address of the `farmer`.
 Once configured, the CLI prints out your administrator public key, which you'll need for the next step!
 It's recommended you now add `grlx` somewhere in your `$PATH`.
 
-2. On your control server, you'll need to install the `farmer`.
-```bash
-# or, just run as root instead of sudo
-curl -L https://bootstrap.grlx.dev/latest/farmer | sudo bash
-```
-You'll be asked several questions about the interface to listen on, which ports to use, etc.
-For the quick start, it's recommended to use the default ports (make sure there's no firewall in the way!).
-You'll be prompted for an admin public key, which you should have gotten from the prior step, and a certificate host name(s).
-Make sure the certificate host name matches the external-facing interface (a domain or IP address) as it will be used for TLS validation!
+----
+### 2. Install the `farmer` on the control serve
+You will then need to install the `farmer` on the control server. The `farmer` is the central server that manages the fleet.
+<Tabs>
+    <TabItem label="systemd (Recommended)">        
+        ```bash
+        # or, just run as root instead of sudo
+        curl -L https://bootstrap.grlx.dev/latest/farmer | sudo bash
+        ```
+        You'll be asked several questions about the interface to listen on, which ports to use, etc.
+        For the quick start, it's recommended to use the default ports (TCP 5405-5406).
+        You'll be prompted for an admin public key, which you should have gotten from the prior step, and a certificate host name(s).
+        Make sure the certificate host name matches the external-facing interface (a domain or IP address) as it will be used for TLS validation!
+    </TabItem>
+    <TabItem label="k3s">
+    Deploy the following to your k3s cluster:
+        ```yaml
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: grlx-farmer-np
+        spec:
+          type: NodePort
+          ports:
+            - name: api
+              port: 5405
+              nodePort: 30405
+            - name: bus
+              port: 5406
+              nodePort: 30406
+          selector:
+            statefulset.kubernetes.io/pod-name: grlx-farmer-0
+        ---
+        apiVersion: apps/v1
+        kind: StatefulSet
+        metadata:
+          name: grlx-farmer
+        spec:
+          selector:
+            matchLabels:
+              app: grlx
+              role: farmer
+          serviceName: grlx-farmer
+          replicas: 1
+          template:
+            metadata:
+              labels:
+                app: grlx
+                role: farmer
+            spec:
+              containers:
+                - name: main
+                  image: grlx/farmer:latest
+                  env:
+                    - name: CERTHOSTS
+                      value: "192.168.1.60"
+                    - name: FARMERAPIPORT
+                      value: "5405"
+                    - name: FARMERBUSPORT
+                      value: "5406"
+                    - name: FARMERINTERFACE
+                      value: "0.0.0.0"
+                    - name: ORGANIZATION
+                      value: "Your Organization"
+                    - name: ADMIN_PUBKEYS
+                      value: "PASTE_YOUR_PUBLIC_KEY_HERE"
+                  ports:
+                    - name: api
+                      containerPort: 5405
+                    - name: bus
+                      containerPort: 5406
+                  volumeMounts:
+                    - name: store
+                      mountPath: /etc/grlx
+              volumes:
+                - name: store
+                  hostPath:
+                    path: /srv/grlx
+                    type: DirectoryOrCreate
+        ```
+    </TabItem>
+    <TabItem label="Docker Compose">
+    ```yaml
+    ```
+    </TabItem>
+</Tabs>
 
-3. On all of your fleet nodes, you'll need to install the `sprout`.
+----
+
+### 3. Install the `sprout` on every node you want to manage
+The `sprout` is the agent that runs on every node you want to manage. It's responsible for executing commands and reporting back to the `farmer`.
 ```bash
 # or, just run as root instead of sudo
 # FARMER_BUS_PORT and FARMER_API_PORT variables are available in case you chose
@@ -82,11 +163,17 @@ curl -L https://bootstrap.grlx.dev/latest/sprout | FARMER_INTERFACE=localhost su
 ```
 Once the sprout is up and running, return to the CLI.
 
-4. If all is well, you're ready to `cook`! Accept the TLS cert and the `sprout` keys when prompted.
+----
+### 4. Accept the TLS cert and the `sprout` keys
+Next, you must accept each `sprout`'s public key and the `farmer`'s TLS certificate. This is done using the `keys` command. Furthermore, using `grlx version`, shows you that you are able to connect to your farmer.
 ```bash
 grlx version
 grlx keys accept -A
-sleep 15;
+```
+
+---- 
+### 5. Now you are ready to `cook`!
+```bash
 grlx -T \* test ping
 grlx -T \* cmd run whoami
 grlx -T \* cmd run --out json -- uname -a
