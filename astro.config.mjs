@@ -6,6 +6,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'grlx.dev',
+            components: { Head: './src/components/Transitions.astro'},
             logo: { src: './src/assets/grlx.webp' },
 			social: {
                 github: 'https://gihthub.com/gogrlx/grlx',
