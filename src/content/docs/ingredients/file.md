@@ -20,8 +20,8 @@ Appends content to a file. Only appends the content if it doesn't exist.
 #### Parameters
 | parameter | type | required | description |
 |-----------|------|----------|-------------|
-| _name_ | string |required| the name/path of the file to delete
-| _text_ | string |required| the text to append to a file
+| _name_ | string | yes| the name/path of the file to delete
+| _text_ | string | yes | the text to append to a file
 #### Example
 ```yaml
 file.append:
@@ -36,7 +36,7 @@ Validates if a file is cached in the sprout's cache. If it isn't the file will b
 | parameter | type | required | description |
 |-----------|------|----------|-------------|
 | _source_ | string | yes | a file source (such as HTTP, file, etc.) to reference
-| _hash_ | string | no | a valid hash of the `source` file
+| _hash_ | string | conditional (required if `skip_verify` is false) | a valid hash of the `source` file
 | _skip_verify_ | boolean | no | whether to skip hash validation, false by default
 #### Example
 ```yaml
@@ -53,11 +53,11 @@ Copies content into a given file
 | _name_ | string | yes | Represents the name of a file or directory
 | _makedirs_ | bool   | no (default: `false`) | Determines whether directories should be created if they don't exist
 | _skip_verify_ | bool   | no (default: `false`) | Determines whether certain verifications should be skipped
-| _source_ | string | no (if `skip_verify` is `false`) | Represents a source file's path or name
-| _source_hash_ | string | conditional (if `source` is provided) | Represents the hash of a source file, used for verification
+| _source_ | string | no | Represents a source file's path or name
+| _source_hash_ | string | conditional (required if `source` is provided and `skip_verify` is `false`) | Represents the hash of a source file, used for verification
 | _text_ | string/list | no | Represents the content of a file. Can be a single string or a list of items
-| _sources_ | list   | no (but required if `source_hashes` is provided) | Represents multiple source files
-| _source_hashes_ | list   | Conditionally | Represents the hashes for the multiple source files mentioned in `sources`
+| _sources_ | list   | no | Represents multiple source files
+| _source_hashes_ | list | conditional (required if `sources` is provided and `skip_verify` is `false`) | Represents the hashes for the multiple source files mentioned in `sources`
 #### Example
 ```yaml
 file.content:
@@ -81,10 +81,10 @@ Checks if a file contains a given selection. If multiple sources are provided, a
 | _name_ | string | yes | the name/path of the file to check
 | _text_ | string | no |the item to search for
 | _source_ | string | no | a file source (such as HTTP, file, etc.) to reference
-| _source_hash_ | string | no | a hash for a given source
+| _source_hash_ | string | conditional (required if `source` provided and `skip_verify` is `false`) | a hash for a given source
 | _sources_ | list | no | a list of sources to check against
-| _source_hashes_ | list | no | a list of source hashes
-| _skip_verify_ | boolean | no | whether to skip hash validation, false by default
+| _source_hashes_ | list | conditional (required if `source` provided and `skip_verify` is `false`) | a list of source hashes
+| _skip_verify_ | boolean | no (default: `false`) | whether to skip hash validation, false by default
 
 
 ## **file.directory**
