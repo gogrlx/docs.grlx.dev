@@ -1,5 +1,5 @@
 {
-  "name": "grlx-starlight",
+  "name": "docs.grlx.dev",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,15 +11,29 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.11.1",
+    "@astrojs/starlight-tailwind": "^2.0.1",
+    "@astrojs/tailwind": "^5.0.2",
+    "@fontsource/ibm-plex-mono": "^5.0.8",
+    "@fontsource/ibm-plex-sans": "^5.0.17",
+    "@fontsource/ibm-plex-serif": "^5.0.8",
     "astro": "^3.2.3",
-    "sharp": "^0.32.5"
+    "dotenv": "^16.3.1",
+    "sharp": "^0.32.5",
+    "tailwindcss": "^3.3.5"
   },
   "overrides": {
-      "astro": {
-          "zod": "^3.22.3"
-      },
-      "@astrojs/starlight": {
-          "zod": "^3.22.3"
-      }
+    "astro": {
+      "zod": "^3.22.3"
+    },
+    "@astrojs/starlight": {
+      "zod": "^3.22.3"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-plugin-astro": "^0.29.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.1",
+    "prettier-plugin-tailwindcss": "^0.5.6"
   }
 }
