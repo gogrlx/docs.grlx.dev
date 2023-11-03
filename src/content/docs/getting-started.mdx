@@ -3,7 +3,7 @@ title: Getting Started
 description: Getting Started with grlx
 ---
 
-import {Tabs,TabItem} from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components'
 
 Want to get up and running as quickly as possible to see what all the fuss is about?
 Use our bootstrap scripts! Follow our Quick Start to get started!
@@ -11,52 +11,42 @@ Use our bootstrap scripts! Follow our Quick Start to get started!
 ## Quick Start
 
 ### 1. Download and initialize the CLI
+
 Install the CLI on your development machine with the correct command for your architecture:
+
 <Tabs>
-    <TabItem label="Linux">
-        <Tabs>
-            <TabItem label="x86_64">
-            ```bash
-            curl -L https://releases.grlx.dev/linux/amd64/latest/grlx > grlx && chmod +x grlx
-            ./grlx init
-            ```
-            </TabItem>
-            <TabItem label="i386">
-            ```bash
-            curl -L https://releases.grlx.dev/linux/368/latest/grlx > grlx && chmod +x grlx
-            ./grlx init
-            ```
-            </TabItem>
-            <TabItem label="arm">
-            ```bash
-            curl -L https://releases.grlx.dev/linux/arm/latest/grlx > grlx && chmod +x grlx
-            ./grlx init
-            ```
-            </TabItem>
-            <TabItem label="arm64">
-            ```bash
-            curl -L https://releases.grlx.dev/linux/arm64/latest/grlx > grlx && chmod +x grlx
-            ./grlx init
-            ```
-            </TabItem>
-        </Tabs>
-    </TabItem>
-    <TabItem label="macOS">
-        <Tabs>
-            <TabItem label="x86_64">
-            ```bash
-            curl -L https://releases.grlx.dev/darwin/amd64/latest/grlx > grlx && chmod +x grlx
-            ./grlx init
-            ```
-            </TabItem>
-            <TabItem label="arm64">
-            ```bash
-            curl -L https://releases.grlx.dev/darwin/arm64/latest/grlx > grlx && chmod +x grlx
-            ./grlx init
-            ```
-            </TabItem>
-        </Tabs>
-    </TabItem>
+  <TabItem label="Linux">
+    <Tabs>
+      <TabItem label="x86_64">
+        ```bash curl -L https://releases.grlx.dev/linux/amd64/latest/grlx > grlx
+        && chmod +x grlx ./grlx init ```
+      </TabItem>
+      <TabItem label="i386">
+        ```bash curl -L https://releases.grlx.dev/linux/368/latest/grlx > grlx
+        && chmod +x grlx ./grlx init ```
+      </TabItem>
+      <TabItem label="arm">
+        ```bash curl -L https://releases.grlx.dev/linux/arm/latest/grlx > grlx
+        && chmod +x grlx ./grlx init ```
+      </TabItem>
+      <TabItem label="arm64">
+        ```bash curl -L https://releases.grlx.dev/linux/arm64/latest/grlx > grlx
+        && chmod +x grlx ./grlx init ```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  <TabItem label="macOS">
+    <Tabs>
+      <TabItem label="x86_64">
+        ```bash curl -L https://releases.grlx.dev/darwin/amd64/latest/grlx >
+        grlx && chmod +x grlx ./grlx init ```
+      </TabItem>
+      <TabItem label="arm64">
+        ```bash curl -L https://releases.grlx.dev/darwin/arm64/latest/grlx >
+        grlx && chmod +x grlx ./grlx init ```
+      </TabItem>
+    </Tabs>
+  </TabItem>
 </Tabs>
 
 You'll be asked some questions, such as which interface the `farmer` is listening on, and which ports to use for communication.
@@ -64,11 +54,14 @@ Set the interface to the domain name or IP address of the `farmer`.
 Once configured, the CLI prints out your administrator public key, which you'll need for the next step!
 It's recommended you now add `grlx` somewhere in your `$PATH`.
 
-----
+---
+
 ### 2. Install the `farmer` on the control serve
+
 You will then need to install the `farmer` on the control server. The `farmer` is the central server that manages the fleet.
+
 <Tabs>
-    <TabItem label="systemd (Recommended)">        
+    <TabItem label="systemd (Recommended)">
         ```bash
         # or, just run as root instead of sudo
         curl -L https://bootstrap.grlx.dev/latest/farmer | sudo bash
@@ -147,34 +140,71 @@ You will then need to install the `farmer` on the control server. The `farmer` i
     </TabItem>
     <TabItem label="Docker Compose">
     ```yaml
+    version: "3"
+    services:
+      farmer:
+        container_name: farmer
+        image: grlx/farmer:latest
+        hostname: farmer
+        environment:
+          - ADMIN_PUBKEYS=<YOUR ADMIN PUBLIC KEY>
+          - CERT_HOSTS=localhost,farmer
+          - FarmerInterface=0.0.0.0
+        volumes:
+          - ./local/farmer:/etc/grlx
+        ports:
+          - "5405:5405"
+          - "5406:5406"
+      sprout:
+        container_name: sprout
+        image: grlx/sprout:latest
+        hostname: sprout
+        volumes:
+          - ./local/sprout:/etc/grlx
+        environment:
+          - FarmerInterface=farmer
     ```
     </TabItem>
 </Tabs>
 
-----
+---
 
 ### 3. Install the `sprout` on every node you want to manage
+
 The `sprout` is the agent that runs on every node you want to manage. It's responsible for executing commands and reporting back to the `farmer`.
+
 ```bash
 # or, just run as root instead of sudo
 # FARMER_BUS_PORT and FARMER_API_PORT variables are available in case you chose
 # to use different ports.
 curl -L https://bootstrap.grlx.dev/latest/sprout | FARMER_INTERFACE=localhost sudo -E bash
 ```
+
 Once the sprout is up and running, return to the CLI.
 
-----
+---
+
 ### 4. Accept the TLS cert and the `sprout` keys
+
 Next, you must accept each `sprout`'s public key and the `farmer`'s TLS certificate. This is done using the `keys` command. Furthermore, using `grlx version`, shows you that you are able to connect to your farmer.
+
 ```bash
 grlx version
 grlx keys accept -A
 ```
 
----- 
+---
+
 ### 5. Now you are ready to `cook`!
+
 ```bash
 grlx -T \* test ping
 grlx -T \* cmd run whoami
 grlx -T \* cmd run --out json -- uname -a
 ```
+
+---
+
+#### Uninstalling
+
+If you ever need to uninstall `grlx`
