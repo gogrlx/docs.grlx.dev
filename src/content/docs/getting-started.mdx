@@ -36,7 +36,7 @@ Install the CLI on your development machine with the correct command for your ar
       </TabItem>
       <TabItem label="arm64">
         ```bash
-        curl -L https://releases.grlx.dev/linux/arm54/latest/grlx > grlx && chmod +x grlx
+        curl -L https://releases.grlx.dev/linux/arm64/latest/grlx > grlx && chmod +x grlx
         ./grlx init
         ```
       </TabItem>
@@ -122,7 +122,7 @@ You will then need to install the `farmer` on the control server. The `farmer` i
                 - name: main
                   image: grlx/farmer:latest
                   env:
-                    - name: CERTHOSTS
+                    - name: CERT_HOSTS
                       value: "192.168.1.60"
                     - name: FARMERAPIPORT
                       value: "5405"
@@ -173,7 +173,7 @@ You will then need to install the `farmer` on the control server. The `farmer` i
         volumes:
           - ./local/sprout:/etc/grlx
         environment:
-          - FarmerInterface=farmer
+          - FARMERINTERFACE=farmer
     ```
     </TabItem>
 </Tabs>
@@ -188,7 +188,7 @@ The `sprout` is the agent that runs on every node you want to manage. It's respo
 # or, just run as root instead of sudo
 # FARMER_BUS_PORT and FARMER_API_PORT variables are available in case you chose
 # to use different ports.
-curl -L https://bootstrap.grlx.dev/latest/sprout | FARMER_INTERFACE=localhost sudo -E bash
+curl -L https://bootstrap.grlx.dev/latest/sprout | FARMERINTERFACE=localhost sudo -E bash
 ```
 
 Once the sprout is up and running, return to the CLI.
