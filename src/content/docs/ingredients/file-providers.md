@@ -1,5 +1,5 @@
 ---
-title: grlx.ingedients.file.providers
+title: grlx.ingredients.file.providers
 description: grlx built-in file providers
 ---
 `grlx` has a concept of file providers for different ways that you might obtain a file to be added to a given sprout. This uses a provider interface to keep this extensible and provide a standard way to use different file types. The `go` interface for File Providers looks like the following:
