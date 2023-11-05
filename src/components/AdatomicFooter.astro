@@ -5,31 +5,25 @@ import { Image } from 'astro:assets'
 import adatomicLogoBlack from '../assets/adatomic-logotype-color-black-h-1200x302.webp'
 import adatomicLogoWhite from '../assets/adatomic-logotype-color-white-h-1200x302.webp'
 
-const isHomepage = Astro.props.slug === ''
 ---
 
-{
-  isHomepage ? (
-    <footer>
-      <a href="https://adatomic-com.onrender.com/">
-        <Image
-          class="dark:hidden"
-          width="280"
-          src={adatomicLogoBlack}
-          alt="ADAtomic logo"
-        />
-        <Image
-          class="hidden dark:inline"
-          width="280"
-          src={adatomicLogoWhite}
-          alt="ADAtomic logo"
-        />
-      </a>
-      <p>&copy; 2023 ADAtomic, Inc. All rights reserved.</p>
-    </footer>
-  ) : (
-    <Default {...Astro.props}>
-      <slot />
-    </Default>
-  )
-}
+<Default {...Astro.props}>
+  <slot />
+</Default>
+<footer>
+  <a href="https://adatomic-com.onrender.com/">
+    <Image
+      class="dark:hidden"
+      width="280"
+      src={adatomicLogoBlack}
+      alt="ADAtomic logo"
+    />
+    <Image
+      class="hidden dark:inline"
+      width="280"
+      src={adatomicLogoWhite}
+      alt="ADAtomic logo"
+    />
+  </a>
+  <p>&copy; 2023 ADAtomic, Inc. All rights reserved.</p>
+</footer>
