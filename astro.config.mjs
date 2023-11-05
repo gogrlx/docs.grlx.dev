@@ -128,6 +128,7 @@ export default defineConfig({
       social: {
         github: 'https://github.com/gogrlx/grlx',
         'x.com': 'https://x.com/gogrlx',
+        discord: 'https://discord.gg/RNsZ3KWjXm',
       },
       sidebar: [
         { label: 'Getting Started', link: '/getting-started' },
