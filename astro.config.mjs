@@ -133,12 +133,12 @@ export default defineConfig({
       sidebar: [
         { label: 'Getting Started', link: '/getting-started' },
         {
-          label: 'Ingredients',
-          autogenerate: { directory: 'ingredients' },
-        },
-        {
           label: 'Architecture',
           autogenerate: { directory: 'architecture' },
+        },
+        {
+          label: 'Ingredients',
+          autogenerate: { directory: 'ingredients' },
         },
       ],
     }),
