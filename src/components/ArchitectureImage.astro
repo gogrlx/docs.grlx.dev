@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets'
+import darkArch from "../assets/grlx-arch-dark.webp"
+import lightArch from '../assets/grlx-arch-light.webp'
+---
+
+<Image
+  class="dark:hidden"
+  src={lightArch}
+  alt="ADAtomic logo"
+/>
+<Image
+  class="hidden dark:inline"
+  src={darkArch}
+  alt="ADAtomic logo dark arch"
+/>
