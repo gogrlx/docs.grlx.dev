@@ -129,6 +129,7 @@ export default defineConfig({
         github: 'https://github.com/gogrlx/grlx',
         'x.com': 'https://x.com/gogrlx',
         discord: 'https://discord.gg/RNsZ3KWjXm',
+        email: 'mailto:grlx@adatomic.com?subject=Question'
       },
       sidebar: [
         { label: 'Getting Started', link: '/getting-started' },
