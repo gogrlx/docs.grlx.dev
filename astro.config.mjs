@@ -109,6 +109,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'grlx Docs',
+      lastUpdated: true,
       description:
         'Documentation for grlx. Fleet configuration management that is low overhead, dependency free, and easy to install.',
       components: {
