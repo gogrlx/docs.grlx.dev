@@ -23,7 +23,7 @@
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         devShells.default = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [ nodejs_18 nodePackages_latest.prettier];
+          nativeBuildInputs = with pkgs; [ nodejs_18 nodePackages_latest.prettier nodePackages_latest.cspell ];
         };
       };
       flake = {
