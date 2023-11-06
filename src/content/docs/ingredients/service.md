@@ -11,10 +11,10 @@ Checks if a service is masked and masks it if it is not
 
 #### Parameters
 
-| parameter  | type   | required | description                                      |
-| ---------- | ------ | -------- | ------------------------------------------------ |
-| _name_     | string | yes      | the name of the `systemd` unit                   |
-| _userMode_ | bool   | no       | to use `systemd` in user mode, defaults to false |
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
 
 ```yaml
 service.masked:
@@ -28,10 +28,10 @@ Checks if a service is unmasked and unmasks it if it is not
 
 #### Parameters
 
-| parameter  | type   | required | description                                      |
-| ---------- | ------ | -------- | ------------------------------------------------ |
-| _name_     | string | yes      | the name of the `systemd` unit                   |
-| _userMode_ | bool   | no       | to use `systemd` in user mode, defaults to false |
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
 
 ```yaml
 service.unmasked:
@@ -45,10 +45,10 @@ Checks if a service is running and starts it if it is not
 
 #### Parameters
 
-| parameter  | type   | required | description                                      |
-| ---------- | ------ | -------- | ------------------------------------------------ |
-| _name_     | string | yes      | the name of the `systemd` unit                   |
-| _userMode_ | bool   | no       | to use `systemd` in user mode, defaults to false |
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
 
 ```yaml
 service.running:
@@ -62,10 +62,10 @@ Checks if a service is stopped and stops it if it is not
 
 #### Parameters
 
-| parameter  | type   | required | description                                      |
-| ---------- | ------ | -------- | ------------------------------------------------ |
-| _name_     | string | yes      | the name of the `systemd` unit                   |
-| _userMode_ | bool   | no       | to use `systemd` in user mode, defaults to false |
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
 
 ```yaml
 service.stopped:
@@ -79,10 +79,10 @@ Checks if a service is enabled and enables it if it is not
 
 #### Parameters
 
-| parameter  | type   | required | description                                      |
-| ---------- | ------ | -------- | ------------------------------------------------ |
-| _name_     | string | yes      | the name of the `systemd` unit                   |
-| _userMode_ | bool   | no       | to use `systemd` in user mode, defaults to false |
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
 
 ```yaml
 service.enabled:
@@ -96,10 +96,10 @@ Checks if a service is disabled and disables it if it is not
 
 #### Parameters
 
-| parameter  | type   | required | description                                      |
-| ---------- | ------ | -------- | ------------------------------------------------ |
-| _name_     | string | yes      | the name of the `systemd` unit                   |
-| _userMode_ | bool   | no       | to use `systemd` in user mode, defaults to false |
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
 
 ```yaml
 service.disabled:
@@ -113,10 +113,10 @@ Restarts a service
 
 #### Parameters
 
-| parameter  | type   | required | description                                      |
-| ---------- | ------ | -------- | ------------------------------------------------ |
-| _name_     | string | yes      | the name of the `systemd` unit                   |
-| _userMode_ | bool   | no       | to use `systemd` in user mode, defaults to false |
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
 
 ```yaml
 service.restarted:
