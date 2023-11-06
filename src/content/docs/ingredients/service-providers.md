@@ -30,7 +30,7 @@ type ServiceProvider interface {
 By default, grlx only has a `systemd` provider. 
 
 ## systemd
-The `systemd` provider is 
+The [`systemd` provider](/ingredients/service) allows for control over a sprout's `systemd` services.
 #### Example
 ```yaml
 service.disabled:
