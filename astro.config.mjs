@@ -114,7 +114,7 @@ export default defineConfig({
       components: {
         Footer: './src/components/AdatomicFooter.astro',
       },
-      customCss: ['./src/tailwind.css'],
+      customCss: ['./src/tailwind.css', './src/custom.css'],
       defaultLocale: 'root',
       locales: {
         root: {

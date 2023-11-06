@@ -16,18 +16,26 @@ hero:
       icon: github
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from '@astrojs/starlight/components'
 
 ## Next steps
 
 <CardGrid stagger>
-	<Card title="Install grlx with our Getting Started" icon="laptop">
-		Check out our [Getting Started](/getting-started) started page on how to install `grlx`
-	</Card>
-	<Card title="Learn about ingredient components" icon="setting">
-		Check out our [ingredients](/ingredients/overview) to learn more about how to configure your fleet
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the grlx Docs](/getting-started)
-	</Card>
+  <Card title="Install grlx with our Getting Started" icon="laptop">
+    Check out our [Getting Started](/getting-started) started page on how to
+    install grlx
+  </Card>
+  <Card title="Learn about ingredient components" icon="setting">
+    Check out our [ingredients](/ingredients/overview) to learn more about how
+    to configure your fleet
+  </Card>
+  <Card title="Read the docs" icon="open-book" class="open-book">
+    Learn more in [the grlx Docs](/getting-started)
+  </Card>
+  <div class="discord-bg">
+    <Card title="Join our Discord" icon="discord" class="discord">
+      Join our [Discord](https://discord.gg/RNsZ3KWjXm) for learning more about
+      grlx
+    </Card>
+  </div>
 </CardGrid>
