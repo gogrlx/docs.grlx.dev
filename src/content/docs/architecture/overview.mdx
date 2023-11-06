@@ -5,19 +5,19 @@ description: A brief description of the grlx architecture
 
 import ArchitectureImage from '../../../components/ArchitectureImage.astro'
 
-At a high level our architecture looks like the following:
+At a high level the grlx architecture looks like the following:
 
 <ArchitectureImage />
 We can boil down the `grlx` into three different parts: the farmer, the sprout, and the CLI.
 
 ## Farmer
-
-The farmer is your control server. This has analogs in other similar configuration platforms. In SaltStack, this is your Salt Master, or in Chef, your Chef Server. `grlx` utilizes the farmer for things like authentication, job processing, and [ingredients](/architecture/overview#ingredients).
+The farmer is your management server running the `grlx-farmer` binary. The binary can run as a systemd service or be hosted in a container. This has analogs in other similar configuration platforms such as a Salt Master in SaltStack or a Chef Server in Chef. grlx utilizes the farmer for things like authentication, job processing, and [ingredients](/architecture/overview#ingredients). Additionally, the farmer contains is responsible for holding your [recipes](/architecture/overview#recipes).
 
 ## Sprout
-
-The sprout is what the farmer manages. This is similar to a Salt Minion in SaltStack or a Chef Client in Chef. Jobs are received from the farmer over the NATS message bus for actions to be performed on the sprout itself.
+The sprout is a managed node running the `grlx-sprout` binary. Sprouts receive commands from the farmer over the NATS message bus. These can be immediate shell commands, or actions that are performed by Ingredients defined in a recipe (e.g. ensure that a file exists, a service is started). Sprouts are similar to a Salt Minion in SaltStack or a Chef Client in Chef. Jobs are received from the farmer over the NATS message bus. Sprouts will then execute the job and report back to the farmer the results of the job.
 
 ## CLI
+The CLI is a tool used to interact with the farmer and manage sprouts. The CLI is used to accept keys from sprouts and `cook` (run) recipes that are hosted on the farmer. The CLI also contains tools to tail the traffic over the NAT bus, test sprout connections, and run arbitrary commands on sprouts.
 
-## Ingredients
+## Recipes
+Recipes are the core of grlx and are responsible for handling the configuration of your sprouts. Recipes are written with the `.grlx` extension and are a combination of YAML and Go templates. Recipes are stored on the farmer and are executed by the sprouts. Recipes are responsible for defining the [ingredients](/architecture/overview#ingredients) and in what order they are executed. For more information see the [recipes](/recipes) section.

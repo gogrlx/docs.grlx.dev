@@ -12,7 +12,7 @@ Deletes a file or directory
 #### Example
 ```yaml
 file.absent:
-    name: ~/.config/sytemd/user/backup.service
+    name: ~/.config/systemd/user/backup.service
 ```
 
 ## **file.append**
@@ -61,7 +61,7 @@ Copies content into a given file
 #### Example
 ```yaml
 file.content:
-    - name: /srv/ngnix/nginx.conf
+    - name: /srv/nginx/nginx.conf
     - makdirs: true
     - text: |
         server {
@@ -106,7 +106,7 @@ file.directory:
     - makdirs: false
     - user: grlx
     - group: grlx
-    - dir_moode: 755
+    - dir_mode: 755
     - recurse: false
 ```
 
