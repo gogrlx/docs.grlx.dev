@@ -62,6 +62,9 @@ Install the CLI on your development machine with the correct command for your ar
 
 You'll be asked some questions, such as which interface the farmer is listening on, and which ports to use for communication.
 Set the interface to the domain name or IP address of the farmer.
+
+If you plan to install the farmer on k3s (see below), then use the IP address of your k3s server, API port 30405, and Bus port 30406. If you plan to locally run the Docker Compose file below, then all of the defaults are good (localhost and default ports).
+
 Once configured, the CLI prints out your administrator public key, which you'll need for the next step!
 It's recommended you now add `grlx` somewhere in your `$PATH`.
 
@@ -83,7 +86,9 @@ You will then need to install the farmer on the management server. The farmer is
         Make sure the certificate host name matches the external-facing interface (a domain or IP address) as it will be used for TLS validation!
     </TabItem>
     <TabItem label="k3s">
-    Deploy the following to your k3s cluster:
+    Copy the resource YAML below. Replace `PASTE_YOUR_PUBLIC_KEY_HERE` with your admin public key, and `PASTE_YOUR_FARMERINTERFACE_HERE` with the domain name or IP address of the farmer.
+
+    Deploy the farmer, e.g. `kubectl apply -f grlx-farmer.yaml`. This will deploy a single farmer to which you can add many external sprouts.
         ```yaml
         apiVersion: v1
         kind: Service
@@ -122,34 +127,42 @@ You will then need to install the farmer on the management server. The farmer is
                 - name: main
                   image: grlx/farmer:latest
                   env:
-                    - name: CERT_HOSTS
-                      value: "192.168.1.60"
-                    - name: FARMERAPIPORT
-                      value: "5405"
-                    - name: FARMERBUSPORT
-                      value: "5406"
-                    - name: FARMERINTERFACE
-                      value: "0.0.0.0"
-                    - name: ORGANIZATION
-                      value: "Your Organization"
                     - name: ADMIN_PUBKEYS
                       value: "PASTE_YOUR_PUBLIC_KEY_HERE"
+                    - name: CERT_HOSTS
+                      value: "localhost,PASTE_YOUR_FARMERINTERFACE_HERE"
+                    - name: FARMERINTERFACE
+                      value: "0.0.0.0" # do not modify
+                    - name: FARMERORGANIZATION
+                      value: "Your Organization" # change to your org name
                   ports:
                     - name: api
                       containerPort: 5405
                     - name: bus
                       containerPort: 5406
                   volumeMounts:
-                    - name: store
+                    - name: cache
+                      mountPath: /var/cache/grlx
+                    - name: config
                       mountPath: /etc/grlx
+                    - name: data
+                      mountPath: /srv/grlx
               volumes:
-                - name: store
+                - name: cache
+                  emptyDir: {}
+                - name: config
+                  hostPath:
+                    path: /etc/grlx
+                    type: DirectoryOrCreate
+                - name: data
                   hostPath:
                     path: /srv/grlx
                     type: DirectoryOrCreate
         ```
     </TabItem>
     <TabItem label="Docker Compose">
+    Copy the Docker Compose YAML below. Replace `PASTE_YOUR_PUBLIC_KEY_HERE` with your admin public key, then `docker compose up` to fire up an all-in-one farmer/sprout environment.
+
     ```yaml
     version: "3"
     services:
@@ -158,15 +171,15 @@ You will then need to install the farmer on the management server. The farmer is
         image: grlx/farmer:latest
         hostname: farmer
         environment:
-          - ADMIN_PUBKEYS=<YOUR ADMIN PUBLIC KEY>
+          - ADMIN_PUBKEYS=PASTE_YOUR_PUBLIC_KEY_HERE
           - CERT_HOSTS=localhost,farmer
-          - FarmerInterface=0.0.0.0
+          - FARMERINTERFACE=0.0.0.0
         volumes:
           - ./local/farmer:/etc/grlx
         ports:
           - "5405:5405"
           - "5406:5406"
-      sprout:
+      sprout: # for testing grlx features only, not for production
         container_name: sprout
         image: grlx/sprout:latest
         hostname: sprout
@@ -185,10 +198,17 @@ You will then need to install the farmer on the management server. The farmer is
 The sprout is the agent that runs on every node you want to manage. It's responsible for executing commands and reporting back to the farmer.
 
 ```bash
-# or, just run as root instead of sudo
-# FARMER_BUS_PORT and FARMER_API_PORT variables are available in case you chose
-# to use different ports.
+# Be sure to change FARMERINTERFACE to the domain or IP address of the farmer.
+# FARMERBUSPORT and FARMERAPIPORT variables are available in case you need
+# to use different ports (see k3s note below).
 curl -L https://bootstrap.grlx.dev/latest/sprout | FARMERINTERFACE=localhost sudo -E bash
+```
+
+NOTE: If you deployed the k3s farmer above, then use:
+
+```bash
+# Be sure to change FARMERINTERFACE to the domain or IP address of the farmer.
+curl -L https://bootstrap.grlx.dev/latest/sprout | FARMERBUSPORT=30406 FARMERAPIPORT=30405 FARMERINTERFACE=localhost sudo -E bash
 ```
 
 Once the sprout is up and running, return to the CLI.
@@ -200,6 +220,8 @@ Once the sprout is up and running, return to the CLI.
 Next, you must accept each sprout's public key and the farmer's TLS certificate. This is done using the `keys` command. Furthermore, using `grlx version`, shows you that you are able to connect to your farmer.
 
 ```bash
+# You will be asked to download and trust the TLS certificate for
+# the farmer, choose Y.
 grlx version
 grlx keys accept -A
 ```
