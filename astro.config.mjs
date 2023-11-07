@@ -142,6 +142,10 @@ export default defineConfig({
           label: 'Ingredients',
           autogenerate: { directory: 'ingredients' },
         },
+        {
+          label: 'Recipes',
+          autogenerate: { directory: 'recipes' },
+        },
       ],
     }),
     tailwind({
