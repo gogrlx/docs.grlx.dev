@@ -146,6 +146,7 @@ export default defineConfig({
           label: 'Recipes',
           autogenerate: { directory: 'recipes' },
         },
+        {label: 'Glossary', link: '/glossary'},
       ],
     }),
     tailwind({
