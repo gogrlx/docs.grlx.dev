@@ -31,9 +31,9 @@ Creates a group if it does not exist
 | parameter | type | required | description |
 |-----------|------|----------|-------------|
 | _name_ | string | yes | The name of the group to create
-| _gid_ | int | no | The GID of the group to create
+| _gid_ | string | no | The GID of the group to create
 ```yaml
 group.present:
   - name: sprout-group
-  - gid: 1000
+  - gid: "1107"
 ```
