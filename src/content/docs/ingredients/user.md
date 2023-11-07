@@ -31,21 +31,21 @@ Creates a new user if it does not exist
 | parameter | type | required | description |
 |-----------|------|----------|-------------|
 | _name_ | string | yes | The username of the user
-| _uid_ | int | no | The UID assigned to the user
-| _gid_ | int | no | The GID to the user
+| _uid_ | string | no | The UID assigned to the user
+| _gid_ | string | no | The GID to the user
 | _groups_ | list, string | no | A list groups the user is part of
-| _shell_ | bool | no | The user login shell, false by default
+| _shell_ | string | no | The user login shell, /bin/false by default
 | _home_ | string | no | The path to the user's home directory if one is required
 ```yaml
 user.present:
   - name: sprout-user
-  - uid: 1000
-  - gid: 1000
+  - uid: "1003"
+  - gid: "1003"
   - groups:
     - wheel
     - media
     - sudo
-  - shell: no
+  - shell: /bin/bash
   - home: /var/sprout-user
 ```
 
