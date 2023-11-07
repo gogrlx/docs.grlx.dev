@@ -12,7 +12,7 @@ Deletes a file or directory
 #### Example
 ```yaml
 file.absent:
-    name: ~/.config/sytemd/user/backup.service
+    name: ~/.config/systemd/user/backup.service
 ```
 
 ## **file.append**
@@ -61,7 +61,7 @@ Copies content into a given file
 #### Example
 ```yaml
 file.content:
-    - name: /srv/ngnix/nginx.conf
+    - name: /srv/nginx/nginx.conf
     - makdirs: true
     - text: |
         server {
@@ -106,7 +106,7 @@ file.directory:
     - makdirs: false
     - user: grlx
     - group: grlx
-    - dir_moode: 755
+    - dir_mode: 755
     - recurse: false
 ```
 
@@ -147,3 +147,20 @@ file.symlink:
     - name: ~/localbash
     - target: /usr/bin/bash
 ```
+
+## **file.touch**
+Performs a `touch` on a file
+| parameter | type | required | description |
+|-----------|------|----------|-------------|
+| _name_ | string | yes | the name/path of the file
+| _atime_ | time (RFC339) | no | the access time to set the file to, set to the current time by default
+| _mtime_ | time (RFC339) | no | the modified time to set the file to, sets to the current time by default
+| _makedirs_ | bool | yes | whether or not to create any provided parent directories, false by default
+```yaml
+file.touch:
+  - name: /tmp/parent/new-file
+  - atime: Mon, 06 Nov 2023 00:00:00 +0000
+  - mtime: Mon, 06 Nov 2023 00:00:00 +0000
+  - makedirs: true 
+```
+

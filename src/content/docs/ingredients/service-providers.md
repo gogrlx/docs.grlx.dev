@@ -2,7 +2,7 @@
 title: grlx.ingredients.service.providers
 description: grlx built-in service providers
 ---
-grlx has a concept of service providers for different ways to interact with a sprout's various services. This uses a provider interface to keep this extensible and provide a standard way to interact with different service managers. The `go` interface for Service Providers looks like the following:
+grlx has a concept of service providers for different ways to interact with a sprout's various services. This uses a provider interface to keep this extensible and provide a standard way to interact with different service managers. The Go interface for Service Providers looks like the following:
 ```go
 type ServiceProvider interface {
   Properties() (map[string]interface{}, error)
@@ -30,7 +30,7 @@ type ServiceProvider interface {
 By default, grlx only has a `systemd` provider. 
 
 ## systemd
-The local provider would be how you would use a file from your host system.
+The [`systemd` provider](/ingredients/service) allows for control over a sprout's `systemd` services.
 #### Example
 ```yaml
 service.disabled:

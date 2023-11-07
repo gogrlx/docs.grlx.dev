@@ -12,7 +12,7 @@ type FileProvider interface {
     Verify(context.Context) (bool, error)
 }
 ```
-By default, `grlx` has three built-in providers: local, HTTP, and S3. 
+By default, `grlx` has two built-in providers: local and HTTP. 
 
 ## Local
 The local provider would be how you would use a file from your host system.
@@ -31,6 +31,3 @@ file.cached:
     - source: https://go.dev/dl/go1.21.3.src.tar.gz
     - hash: sha256=186f2b6f8c8b704e696821b09ab2041a5c1ee13dcbc3156a13adcf75931ee488
 ```
-
-## TODO: S3
-The S3 allows you to get a file from an S3 compatible bucket.

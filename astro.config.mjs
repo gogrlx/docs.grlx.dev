@@ -109,6 +109,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'grlx Docs',
+      lastUpdated: true,
       description:
         'Documentation for grlx. Fleet configuration management that is low overhead, dependency free, and easy to install.',
       components: {
@@ -129,16 +130,21 @@ export default defineConfig({
         github: 'https://github.com/gogrlx/grlx',
         'x.com': 'https://x.com/gogrlx',
         discord: 'https://discord.gg/RNsZ3KWjXm',
+        email: 'mailto:grlx@adatomic.com?subject=Question'
       },
       sidebar: [
         { label: 'Getting Started', link: '/getting-started' },
+        {
+          label: 'Architecture',
+          autogenerate: { directory: 'architecture' },
+        },
         {
           label: 'Ingredients',
           autogenerate: { directory: 'ingredients' },
         },
         {
-          label: 'Architecture',
-          autogenerate: { directory: 'architecture' },
+          label: 'Recipes',
+          autogenerate: { directory: 'recipes' },
         },
       ],
     }),
