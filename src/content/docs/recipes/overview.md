@@ -7,7 +7,7 @@ Recipes are the core of grlx functionality, providing a structured way for devel
 include:
   - .super-sprout-steps
 steps:
-{{ if props hostname super-sprout }}
+{{ if eq (props hostname) super-sprout }}
   install super-sprout:
     file.touch:
       - name: ~/super-sprout-config
