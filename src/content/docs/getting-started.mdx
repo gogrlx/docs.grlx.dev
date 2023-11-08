@@ -242,5 +242,9 @@ grlx -T \* cmd run --out json -- uname -a
 
 If you ever need to uninstall the `grlx-farmer`, you can do so with the following commands:
 ```bash
-curl -L https://bootstrap.grlx.dev/latest/farmer | UNINSTALL=true sudo bash
+curl -L https://bootstrap.grlx.dev/latest/farmer | UNINSTALL=true sudo -e bash
+```
+Or the `grlx-sprout`:
+```bash
+curl -L https://bootstrap.grlx.dev/latest/sprout | UNINSTALL=true sudo -e bash
 ```
