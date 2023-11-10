@@ -1,7 +1,10 @@
 ---
 title: grlx.ingredients.file
-description: file 
+description: file
 ---
+
+import Badge from '@astrojs/starlight/components/Badge.astro';
+
 The file ingredient handles all file operations on various [file providers](/ingredients/file-providers) (such as local files, HTTP, etc.)
 ## **file.absent**
 Deletes a file or directory
@@ -25,7 +28,7 @@ Appends content to a file. Only appends the content if it doesn't exist.
 | _makedirs_ | bool | no | create parent directories if they do not exist
 | _source_ | string | no | append lines from a file sourced from this path/URL
 | _source_hash_ | string | no | hash to verify the file specified by source
-| _template_ | bool | no | treat this file as a template and render it before placing it (experimental)
+| _template_ <Badge text="experimental"/>| bool | no | treat this file as a template and render it before placing
 | _sources_ | string/list | no | list source, but in list format
 | _source_hashes_ | string/list | no | corresponding hashes for sources
 #### Example
@@ -64,7 +67,7 @@ Checks if a file contains a given selection. If multiple sources are provided, a
 | _source_hash_ | string | conditional (required if `source` provided) | a hash for a given source
 | _sources_ | list | no | a list of sources to check against
 | _source_hashes_ | list | conditional (required if `sources` provided) | a list of source hashes
-| _template_ | bool | no | treat this file as a template and render it before placing it (experimental)
+| _template_ <Badge text="experimental" />| bool | no | treat this file as a template and render it before placing it
 
 
 ## **file.content**
@@ -78,7 +81,7 @@ Copies content into a given file
 | _source_hash_ | string | conditional (required if `source` is provided and `skip_verify` is `false`) | Represents the hash of a source file, used for verification
 | _text_ | string/list | no | Represents the content of a file. Can be a single string or a list of items
 | _sources_ | list   | no | Represents multiple source files
-| _template_ | bool | no | treat this file as a template and render it before placing it (experimental)
+| _template_ <Badge text="experimental" />| bool | no | treat this file as a template and render it before placing it
 | _source_hashes_ | list | conditional (required if `sources` is provided and `skip_verify` is `false`) | Represents the hashes for the multiple source files mentioned in `sources`
 #### Example
 ```yaml
@@ -142,7 +145,7 @@ Manage many properties of a file concurrently, safely
 | _user_ | string | no |the user who will own the directory
 | _group_ | string | no |the group who will own the directory
 | _mode_ | string | no |the file's mode
-| _template_ | bool | no | treat this file as a template and render it before placing it (experimental)
+| _template_ <Badge text="experimental" />| bool | no | treat this file as a template and render it before placing it
 | _makedirs_ | bool   | no (default: `false`) | Determines whether directories should be created if they don't exist
 | _dir_mode_ | string | no |the directory mode
 | _text_ | string/list | no | Represents the content of a file. Can be a single string or a list of items
@@ -187,7 +190,7 @@ Prepends content to a file. Only prepends the content if it doesn't exist.
 | _makedirs_ | bool | no | create parent directories if they do not exist
 | _source_ | string | no | prepend lines from a file sourced from this path/URL
 | _source_hash_ | string | no | hash to verify the file specified by source
-| _template_ | bool | no | treat this file as a template and render it before placing it (experimental)
+| _template_ <Badge text="experimental" />| bool | no | treat this file as a template and render it before placing it
 | _sources_ | string/list | no | list source, but in list format
 | _source_hashes_ | string/list | no | corresponding hashes for sources
 #### Example
@@ -232,5 +235,5 @@ file.touch:
   - name: /tmp/parent/new-file
   - atime: Mon, 06 Nov 2023 00:00:00 +0000
   - mtime: Mon, 06 Nov 2023 00:00:00 +0000
-  - makedirs: true 
+  - makedirs: true
 ```

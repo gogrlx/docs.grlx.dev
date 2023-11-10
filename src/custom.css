@@ -7,3 +7,6 @@
   display: none;
 }
 
+table .sl-badge {
+  font-size: 0.75em;
+}
