@@ -29,7 +29,7 @@ Appends content to a file. Only appends the content if it doesn't exist.
 | _source_ | string | no | append lines from a file sourced from this path/URL
 | _source_hash_ | string | no | hash to verify the file specified by source
 | _template_ <Badge text="experimental"/>| bool | no | treat this file as a template and render it before placing
-| _sources_ | string/list | no | list source, but in list format
+| _sources_ | string/list | no | appends all content specified in list, checked in order
 | _source_hashes_ | string/list | no | corresponding hashes for sources
 #### Example
 ```yaml
@@ -66,7 +66,8 @@ Checks if a file contains a given selection. If multiple sources are provided, a
 | _source_ | string | no | a file source (such as HTTP, file, etc.) to reference
 | _source_hash_ | string | conditional (required if `source` provided) | a hash for a given source
 | _sources_ | list | no | a list of sources to check against
-| _source_hashes_ | list | conditional (required if `sources` provided) | a list of source hashes
+| _source_hashes_ | list | conditional (required if `skip_verify` is false) | a list of source hashes
+| _skip_verify_ | boolean | no | whether to skip hash validation, false by default
 | _template_ <Badge text="experimental" />| bool | no | treat this file as a template and render it before placing it
 
 
@@ -82,6 +83,7 @@ Copies content into a given file
 | _text_ | string/list | no | Represents the content of a file. Can be a single string or a list of items
 | _sources_ | list   | no | Represents multiple source files
 | _template_ <Badge text="experimental" />| bool | no | treat this file as a template and render it before placing it
+| _skip_verify_ | boolean | no | whether to skip hash validation, false by default
 | _source_hashes_ | list | conditional (required if `sources` is provided and `skip_verify` is `false`) | Represents the hashes for the multiple source files mentioned in `sources`
 #### Example
 ```yaml
@@ -141,7 +143,7 @@ Manage many properties of a file concurrently, safely
 |-----------|------|----------|-------------|
 | _name_ | string | yes | Represents the name of a file or directory
 | _source_ | string | no | Represents a source file's path or name
-| _source_hash_ | string | conditional (required if `source` is provided) | Represents the hash of a source file, used for verification
+| _source_hash_ | string | conditional (required if `skip_verify` is false) | Represents the hash of a source file, used for verification
 | _user_ | string | no |the user who will own the directory
 | _group_ | string | no |the group who will own the directory
 | _mode_ | string | no |the file's mode
@@ -150,6 +152,7 @@ Manage many properties of a file concurrently, safely
 | _dir_mode_ | string | no |the directory mode
 | _text_ | string/list | no | Represents the content of a file. Can be a single string or a list of items
 | _sources_ | list   | no | Represents multiple source files
+| _skip_verify_ | boolean | no | whether to skip hash validation, false by default
 | _source_hashes_ | list | conditional (required if `sources` is provided) | Represents the hashes for the multiple source files mentioned in `sources`
 #### Example
 ```yaml
@@ -189,7 +192,8 @@ Prepends content to a file. Only prepends the content if it doesn't exist.
 | _text_ | string | no | the text to prepend to a file
 | _makedirs_ | bool | no | create parent directories if they do not exist
 | _source_ | string | no | prepend lines from a file sourced from this path/URL
-| _source_hash_ | string | no | hash to verify the file specified by source
+| _source_hash_ | string | conditional (required if `source` is provided and `skip_verify` is `false`) | hash to verify the file specified by source
+| _skip_verify_ | boolean | no | whether to skip hash validation, false by default
 | _template_ <Badge text="experimental" />| bool | no | treat this file as a template and render it before placing it
 | _sources_ | string/list | no | list source, but in list format
 | _source_hashes_ | string/list | no | corresponding hashes for sources
