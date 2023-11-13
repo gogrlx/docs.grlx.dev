@@ -11,7 +11,7 @@ Removes a user if it exists
 | _name_ | string | yes | the name of the user to be removed
 ```yaml
 user.absent:
-  - name: super-sprout
+  - name: supersprout
 ```
 
 ## **user.exists**
@@ -22,7 +22,7 @@ Validates if a user exists
 | _name_ | string | yes | The username to check
 ```yaml
 user.exists:
-  - name: sprout-user
+  - name: sproutuser
 ```
 
 ## **user.present**
@@ -38,7 +38,7 @@ Creates a new user if it does not exist
 | _home_ | string | no | The path to the user's home directory if one is required
 ```yaml
 user.present:
-  - name: sprout-user
+  - name: sproutuser
   - uid: "1003"
   - gid: "1003"
   - groups:
@@ -46,6 +46,6 @@ user.present:
     - media
     - sudo
   - shell: /bin/bash
-  - home: /var/sprout-user
+  - home: /var/sproutuser
 ```
 
