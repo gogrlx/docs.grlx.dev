@@ -42,5 +42,5 @@ steps:
 
 It is important to note the requisites listed. This ensures that the step from the include (`super-sprout-steps-completed`) occurs _before_ the `install-super-sprout` step is run. 
 :::note
-Deployment of recipe steps is non-deterministic unless requisites are provided. Otherwise, are steps run as is. If order is important, than order ***must*** be specified.
+Deployment of recipe steps is non-deterministic unless requisites are provided. Otherwise, are steps run as is. If order is important, then requisites ***must*** be specified.
 :::
