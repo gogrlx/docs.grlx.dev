@@ -11,7 +11,7 @@ Removes a group
 | _name_ | string | no | The name of the group to remove
 ```yaml
 group.absent:
-  - name: sprout-group
+  - name: sproutgroup
 ```
 
 ## **group.exists**
@@ -22,7 +22,7 @@ Validates if a group exists
 | _name_ | string | yes | The group name to check
 ```yaml
 group.exists:
-  - name: sprout-group
+  - name: sproutgroup
 ```
 
 ## **group.present**
@@ -34,6 +34,6 @@ Creates a group if it does not exist
 | _gid_ | string | no | The GID of the group to create
 ```yaml
 group.present:
-  - name: sprout-group
+  - name: sproutgroup
   - gid: "1107"
 ```
