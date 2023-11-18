@@ -154,5 +154,5 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
-  site: 'https://doc.grlx.dev',
+  site: 'https://docs.grlx.dev',
 })
