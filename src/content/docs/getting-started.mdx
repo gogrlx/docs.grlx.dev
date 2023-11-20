@@ -176,6 +176,8 @@ You will then need to install the farmer on the management server. The farmer is
           - FARMERINTERFACE=0.0.0.0
         volumes:
           - ./local/farmer:/etc/grlx
+          # This is where the farmer whill store its recipes
+          - ./local/data:/srv/grlx
         ports:
           - "5405:5405"
           - "5406:5406"
