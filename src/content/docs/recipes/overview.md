@@ -44,3 +44,5 @@ It is important to note the requisites listed. This ensures that the step from t
 :::note
 Deployment of recipe steps is non-deterministic unless requisites are provided. Otherwise, are steps run as is. If order is important, then requisites ***must*** be specified.
 :::
+
+Once you create a recipe, you can run it using `grlx cook <name> -T <list of sprouts or \* for all sprouts>`. In the case of the example above, I might run something like `grlx cook example -T \*` to run the above on all sprouts. You could also run `grlx cook example -T \* --out json` to get a json output of running this recipe against sprouts.
