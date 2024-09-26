@@ -4,6 +4,7 @@ import Default from '@astrojs/starlight/components/Footer.astro'
 import { Image } from 'astro:assets'
 import adatomicLogoBlack from '../assets/adatomic-logotype-color-black-h-1200x302.webp'
 import adatomicLogoWhite from '../assets/adatomic-logotype-color-white-h-1200x302.webp'
+import Posthog from './Posthog.astro'
 ---
 
 <Default {...Astro.props}>
@@ -32,4 +33,5 @@ import adatomicLogoWhite from '../assets/adatomic-logotype-color-white-h-1200x30
       <a href="https://shop.grlx.dev" class="text-accent-600 dark:text-accent-200"><p >shop.grlx.dev</p></a>
     </div>
   </div>
+  <Posthog/>
 </footer>
