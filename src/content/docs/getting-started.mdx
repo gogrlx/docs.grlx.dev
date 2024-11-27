@@ -77,8 +77,8 @@ You will then need to install the farmer on the management server. The farmer is
 <Tabs>
     <TabItem label="systemd (Recommended)">
         ```bash
-        # or, just run as root instead of sudo
-        curl -L https://bootstrap.grlx.dev/latest/farmer | sudo bash
+        # You need to perform this task as root
+        curl -L https://bootstrap.grlx.dev/latest/farmer | bash
         ```
         You'll be asked several questions about the interface to listen on, which ports to use, etc.
         For the quick start, it's recommended to use the default ports (TCP 5405-5406).
@@ -203,14 +203,14 @@ The sprout is the agent that runs on every node you want to manage. It's respons
 # Be sure to change FARMERINTERFACE to the domain or IP address of the farmer.
 # FARMERBUSPORT and FARMERAPIPORT variables are available in case you need
 # to use different ports (see k3s note below).
-curl -L https://bootstrap.grlx.dev/latest/sprout | FARMERINTERFACE=localhost sudo -E bash
+curl -L https://bootstrap.grlx.dev/latest/sprout | FARMERINTERFACE=localhost bash
 ```
 
 NOTE: If you deployed the k3s farmer above, then use:
 
 ```bash
 # Be sure to change FARMERINTERFACE to the domain or IP address of the farmer.
-curl -L https://bootstrap.grlx.dev/latest/sprout | FARMERBUSPORT=30406 FARMERAPIPORT=30405 FARMERINTERFACE=localhost sudo -E bash
+curl -L https://bootstrap.grlx.dev/latest/sprout | FARMERBUSPORT=30406 FARMERAPIPORT=30405 FARMERINTERFACE=localhost bash
 ```
 
 Once the sprout is up and running, return to the CLI.
@@ -244,9 +244,9 @@ grlx -T \* cmd run --out json -- uname -a
 
 If you ever need to uninstall the `grlx-farmer`, you can do so with the following commands:
 ```bash
-curl -L https://bootstrap.grlx.dev/latest/farmer | UNINSTALL=true sudo -E bash
+curl -L https://bootstrap.grlx.dev/latest/farmer | UNINSTALL=true bash
 ```
 Or the `grlx-sprout`:
 ```bash
-curl -L https://bootstrap.grlx.dev/latest/sprout | UNINSTALL=true sudo -E bash
+curl -L https://bootstrap.grlx.dev/latest/sprout | UNINSTALL=true bash
 ```
