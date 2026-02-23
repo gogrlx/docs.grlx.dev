@@ -1,3 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer base, starlight, theme, components, utilities;
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --color-accent-200: #bee1ff;
+  --color-accent-600: #2376ed;
+  --color-accent-900: #1d448b;
+  --color-accent-950: #162b55;
+  --color-gray-100: #f4f6fa;
+  --color-gray-200: #e9eef5;
+  --color-gray-300: #bcc3ca;
+  --color-gray-400: #818d9c;
+  --color-gray-500: #4e5967;
+  --color-gray-700: #2f3946;
+  --color-gray-800: #1e2834;
+  --color-gray-900: #14191e;
+}

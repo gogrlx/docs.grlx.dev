@@ -10,30 +10,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.31.1",
-    "@astrojs/starlight-tailwind": "^2.0.1",
-    "@astrojs/tailwind": "^5.1.5",
-    "@fontsource/ibm-plex-mono": "^5.0.8",
-    "@fontsource/ibm-plex-sans": "^5.0.17",
-    "@fontsource/ibm-plex-serif": "^5.0.8",
-    "astro": "^5.1.8",
-    "dotenv": "^16.3.1",
-    "sharp": "^0.32.5",
-    "tailwindcss": "^3.3.5"
-  },
-  "overrides": {
-    "astro": {
-      "zod": "^3.22.3"
-    },
-    "@astrojs/starlight": {
-      "zod": "^3.22.3"
-    }
+    "@astrojs/starlight": "^0.37.6",
+    "@astrojs/starlight-tailwind": "^4.0.2",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans": "^5.2.8",
+    "@fontsource/ibm-plex-serif": "^5.2.7",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.17.3",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "eslint": "^8.52.0",
-    "eslint-plugin-astro": "^0.29.1",
-    "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.1",
-    "prettier-plugin-tailwindcss": "^0.5.6"
+    "eslint": "^9.27.0",
+    "eslint-plugin-astro": "^1.6.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2"
   }
 }
