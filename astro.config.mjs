@@ -1,16 +1,15 @@
-import 'dotenv/config'
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 
 // SEE: https://developers.google.com/analytics/devguides/collection/gtagjs
-const gaTrackingID = process.env.GA_TRACKING_ID
+const gaTrackingID = import.meta.env.GA_TRACKING_ID
 const gaSrc = `https://www.googletagmanager.com/gtag/js?id=${gaTrackingID}`
 
 // SEE: https://plausible.io/docs/plausible-script
-const plausibleDomain = process.env.PLAUSIBLE_DOMAIN
+const plausibleDomain = import.meta.env.PLAUSIBLE_DOMAIN
 const plausibleSrc =
-  process.env.PLAUSIBLE_SRC || 'https://plausible.io/js/script.js'
+  import.meta.env.PLAUSIBLE_SRC || 'https://plausible.io/js/script.js'
 
 const head = []
 
@@ -120,18 +119,18 @@ export default defineConfig({
       locales: {
         root: {
           label: 'English',
-          lang: 'en', // lang is required for root locales
+          lang: 'en',
         },
       },
       favicon: '/favicon.ico',
       head,
       logo: { src: './src/assets/grlx.webp' },
-      social: {
-        github: 'https://github.com/gogrlx/grlx',
-        'x.com': 'https://x.com/gogrlx',
-        discord: 'https://discord.gg/RNsZ3KWjXm',
-        email: 'mailto:grlx@adatomic.com?subject=Question'
-      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/gogrlx/grlx' },
+        { icon: 'x.com', label: 'X', href: 'https://x.com/gogrlx' },
+        { icon: 'discord', label: 'Discord', href: 'https://discord.gg/RNsZ3KWjXm' },
+        { icon: 'email', label: 'Email', href: 'mailto:grlx@adatomic.com?subject=Question' },
+      ],
       sidebar: [
         { label: 'Getting Started', link: '/getting-started' },
         {
@@ -146,13 +145,12 @@ export default defineConfig({
           label: 'Recipes',
           autogenerate: { directory: 'recipes' },
         },
-        {label: 'Glossary', link: '/glossary'},
+        { label: 'Glossary', link: '/glossary' },
       ],
     }),
-    tailwind({
-      // Disable the default base styles:
-      applyBaseStyles: false,
-    }),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   site: 'https://docs.grlx.dev',
 })
