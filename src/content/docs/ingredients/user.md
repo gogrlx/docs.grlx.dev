@@ -1,6 +1,6 @@
 ---
 title: grlx.ingredients.user
-desc: An overview of grlx.ingredients.user
+description: An overview of grlx.ingredients.user
 ---
 The user ingredient handles user operations on sprouts.
 ## **user.absent**
