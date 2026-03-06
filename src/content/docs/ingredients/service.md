@@ -3,7 +3,7 @@ title: grlx.ingredients.service
 description: service
 ---
 
-The `service` ingredient handles the management of system services. Currently, this only supports `systemd` services.
+The `service` ingredient handles the management of system services. grlx uses a provider interface, so the same recipe syntax works across different init systems. See [service providers](/ingredients/service-providers) for supported backends.
 
 ## **service.masked**
 

@@ -1,6 +1,6 @@
 ---
 title: grlx.ingredients.group
-desc: An overview of grlx.ingredients.group
+description: An overview of grlx.ingredients.group
 ---
 The group ingredient handles group operations on sprouts.
 ## **group.absent**

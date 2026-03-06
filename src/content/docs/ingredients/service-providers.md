@@ -27,13 +27,39 @@ type ServiceProvider interface {
   IsInit() bool
 }
 ```
-By default, grlx only has a `systemd` provider. 
+
+grlx automatically detects which init system is running on each sprout and selects the appropriate provider. The following providers are built in:
 
 ## systemd
-The [`systemd` provider](/ingredients/service) allows for control over a sprout's `systemd` services.
+
+The `systemd` provider manages services on Linux systems using systemd. This is the most common provider and is auto-detected on systems where `systemctl` is available.
+
 #### Example
 ```yaml
-service.disabled:
+service.enabled:
   - name: cronie.service
   - userMode: false
 ```
+
+## rc.d (BSD)
+
+The `rc.d` provider manages services on BSD systems (FreeBSD, NetBSD, OpenBSD, DragonFlyBSD) using the native rc.d init system. It is auto-detected on systems where `/etc/rc.d` or `/usr/local/etc/rc.d` is present.
+
+The rc.d provider maps grlx service operations to the corresponding `service(8)` and `rc.conf` commands:
+- **Start/Stop/Restart** — `service <name> start|stop|restart`
+- **Enable/Disable** — adds or removes `<name>_enable="YES"` in `/etc/rc.conf`
+- **Status** — `service <name> status`
+
+#### Example
+```yaml
+service.running:
+  - name: sshd
+```
+
+:::note
+The `userMode` parameter is not applicable to rc.d services and is ignored if set.
+:::
+
+:::note
+The `mask`/`unmask` operations are supported on rc.d but use `rc.conf` variables to prevent service startup, since BSD rc.d does not have a native mask concept like systemd.
+:::
