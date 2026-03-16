@@ -137,6 +137,8 @@ export default defineConfig({
           label: 'Architecture',
           autogenerate: { directory: 'architecture' },
         },
+        { label: 'Cohorts', link: '/cohorts' },
+        { label: 'Managing Sprouts', link: '/sprouts' },
         {
           label: 'Ingredients',
           autogenerate: { directory: 'ingredients' },
@@ -144,6 +146,14 @@ export default defineConfig({
         {
           label: 'Recipes',
           autogenerate: { directory: 'recipes' },
+        },
+        { label: 'SSH', link: '/ssh' },
+        {
+          label: 'Security',
+          items: [
+            { label: 'RBAC', link: '/rbac' },
+            { label: 'Audit Logging', link: '/audit' },
+          ],
         },
         { label: 'Glossary', link: '/glossary' },
       ],
