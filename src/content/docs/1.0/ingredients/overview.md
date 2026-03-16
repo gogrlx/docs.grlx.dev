@@ -3,9 +3,11 @@ title: Overview
 description: The foundation of grlx
 sidebar:
   order: 1
+slug: 1.0/ingredients/overview
 ---
 
 Recipe ingredients are how we build configurations with `grlx`. They can be thought of as the building blocks for completing various file, service, or management operations. Recipes rely on dependency injection via a provider system to provide extensible backends for various tasks. This also allows users to develop [go plugins](https://pkg.go.dev/plugin) to extend ingredient providers.
+
 :::note
-The [file ingredient](/ingredients/file) already supports a few different file providers. Check out the list of file providers [here](/ingredients/file-providers).
+The [file ingredient](/1.0/ingredients/file) already supports a few different file providers. Check out the list of file providers [here](/1.0/ingredients/file-providers).
 :::

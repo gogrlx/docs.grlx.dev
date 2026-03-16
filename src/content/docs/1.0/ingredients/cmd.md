@@ -1,6 +1,7 @@
 ---
 title: grlx.ingredients.cmd
 description: cmd
+slug: 1.0/ingredients/cmd
 ---
 
 The cmd ingredient allows you to run arbitrary shell commands against sprouts.

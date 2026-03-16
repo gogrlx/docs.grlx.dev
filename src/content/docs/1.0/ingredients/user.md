@@ -1,6 +1,7 @@
 ---
 title: grlx.ingredients.user
 description: An overview of grlx.ingredients.user
+slug: 1.0/ingredients/user
 ---
 
 The user ingredient handles user operations on sprouts.

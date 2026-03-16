@@ -1,6 +1,7 @@
 ---
 title: grlx.ingredients.service.providers
 description: grlx built-in service providers
+slug: 1.0/ingredients/service-providers
 ---
 
 grlx has a concept of service providers for different ways to interact with a sprout's various services. This uses a provider interface to keep this extensible and provide a standard way to interact with different service managers. The Go interface for Service Providers looks like the following:

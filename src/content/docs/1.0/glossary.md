@@ -1,11 +1,12 @@
 ---
 title: Glossary
 description: A glossary of terms commonly used in grlx
+slug: 1.0/glossary
 ---
 
 ## Farmer (grlx-farmer)
 
-The farmer is your management server running the `grlx-farmer` binary. The binary can run as a systemd service or be hosted in a container. This has analogs in other similar configuration platforms. In SaltStack, this is your Salt Master, or in Chef, your Chef Server. grlx utilizes the farmer for things like authentication, job processing, and [ingredients](/architecture/overview#ingredients).
+The farmer is your management server running the `grlx-farmer` binary. The binary can run as a systemd service or be hosted in a container. This has analogs in other similar configuration platforms. In SaltStack, this is your Salt Master, or in Chef, your Chef Server. grlx utilizes the farmer for things like authentication, job processing, and [ingredients](/1.0/architecture/overview#ingredients).
 
 ## Sprout (grlx-sprout)
 
@@ -19,10 +20,6 @@ The CLI is a tool used to interact with the farmer and manage sprouts. The CLI i
 
 All communication is encrypted using self-signed TLS certificates and [NATS.io NKey encryption](https://docs.nats.io/running-a-nats-service/configuration/securing_nats/auth_intro/nkey_auth). Certificates are pinned to the clients on first connection as an extra security precaution. Furthermore, every CLI must accept a working certificate for any interactions with the farmer. NKeys provides a NATS native method for handling asymmetric encryption of messages between all parts of the system.
 
-## Cohorts
-
-[Cohorts](/cohorts) let you organize sprouts into named groups (static, dynamic, or compound) for targeting with `cook`, `cmd run`, `ssh`, and other operations.
-
 ## Command Execution
 
 The CLI has the ability to dispatch arbitrary shell commands to sprouts using `grlx cmd run`. Jobs are evaluated and dispatched to sprouts and their outputs are aggregated to the output of the CLI. Furthermore, this can be used inside of recipes for more structured deployments.
@@ -33,7 +30,7 @@ Hooks provide a way to fire off webhooks when recipe deployment (cook) starts, f
 
 ## Ingredients
 
-[Ingredients](/ingredients/overview) are how we build configurations with grlx. They can be thought of as the building blocks for completing various file, service, or management operations. Ingredients use a provider interface to allow for simple extensibility via the [Go plugin system](https://pkg.go.dev/plugin).
+[Ingredients](/1.0/ingredients/overview) are how we build configurations with grlx. They can be thought of as the building blocks for completing various file, service, or management operations. Ingredients use a provider interface to allow for simple extensibility via the [Go plugin system](https://pkg.go.dev/plugin).
 
 ## Template Engine
 
@@ -46,14 +43,6 @@ You initiate jobs from the CLI by cooking recipes. Processing is continued on th
 ## Properties (Farmer, Sprout and Fetched Sprout Props)
 
 Both farmers and sprouts have properties for use in recipes. These properties are used in recipe templates to specify conditional execution of parts of the recipe. One example of this might be the specific OS or architecture of a sprout to ensure that the correct package gets installed on the correct machine.
-
-## RBAC
-
-[Role-based access control](/rbac) governs which users can perform which actions on which cohorts. Permissions are tied to CLI public keys. See also [Audit Logging](/audit) for action tracking.
-
-## SSH
-
-[`grlx ssh`](/ssh) opens an interactive shell on a sprout over the NATS message bus — no direct network access required.
 
 ## API
 

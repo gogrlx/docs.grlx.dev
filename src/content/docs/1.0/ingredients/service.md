@@ -1,0 +1,126 @@
+---
+title: grlx.ingredients.service
+description: service
+slug: 1.0/ingredients/service
+---
+
+The `service` ingredient handles the management of system services. grlx uses a provider interface, so the same recipe syntax works across different init systems. See [service providers](/1.0/ingredients/service-providers) for supported backends.
+
+## **service.masked**
+
+Checks if a service is masked and masks it if it is not
+
+#### Parameters
+
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
+
+```yaml
+service.masked:
+  - name: ssd-backup
+  - userMode: true
+```
+
+## **service.unmasked**
+
+Checks if a service is unmasked and unmasks it if it is not
+
+#### Parameters
+
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
+
+```yaml
+service.unmasked:
+  - name: ssd-backup
+  - userMode: true
+```
+
+## **service.running**
+
+Checks if a service is running and starts it if it is not
+
+#### Parameters
+
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
+
+```yaml
+service.running:
+  - name: docker.service
+  - userMode: false
+```
+
+## **service.stopped**
+
+Checks if a service is stopped and stops it if it is not
+
+#### Parameters
+
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
+
+```yaml
+service.stopped:
+  - name: docker.service
+  - userMode: false
+```
+
+## **service.enabled**
+
+Checks if a service is enabled and enables it if it is not
+
+#### Parameters
+
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
+
+```yaml
+service.enabled:
+  - name: cronie.service
+  - userMode: false
+```
+
+## **service.disabled**
+
+Checks if a service is disabled and disables it if it is not
+
+#### Parameters
+
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
+
+```yaml
+service.disabled:
+  - name: cronie.service
+  - userMode: false
+```
+
+## **service.restarted**
+
+Restarts a service
+
+#### Parameters
+
+| parameter  | type   | required | description                                   |
+| ---------- | ------ | -------- | --------------------------------------------- |
+| _name_     | string | yes      | the name of the service unit                  |
+| _userMode_ | bool   | no       | to use service in user mode, false by default |
+
+```yaml
+service.restarted:
+  - name: cronie.service
+  - userMode: false
+```

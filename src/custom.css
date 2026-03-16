@@ -1,9 +1,9 @@
-.discord-bg .card .icon{
-  background-color: #5865F2;
-  --sl-card-border: #454FBF !important;
+.discord-bg .card .icon {
+  background-color: #5865f2;
+  --sl-card-border: #454fbf !important;
 }
 
-[data-theme="light"] .hidden{
+[data-theme='light'] .hidden {
   display: none;
 }
 
