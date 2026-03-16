@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import tailwindcss from '@tailwindcss/vite'
+import starlightVersions from 'starlight-versions'
 
 // SEE: https://developers.google.com/analytics/devguides/collection/gtagjs
 const gaTrackingID = import.meta.env.GA_TRACKING_ID
@@ -107,6 +108,12 @@ head.push(
 export default defineConfig({
   integrations: [
     starlight({
+      plugins: [
+        starlightVersions({
+          current: { label: 'v2.0-alpha' },
+          versions: [{ slug: '1.0', label: 'v1.0.5' }],
+        }),
+      ],
       title: 'grlx Docs',
       lastUpdated: true,
       description:
@@ -126,10 +133,22 @@ export default defineConfig({
       head,
       logo: { src: './src/assets/grlx.webp' },
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/gogrlx/grlx' },
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/gogrlx/grlx',
+        },
         { icon: 'x.com', label: 'X', href: 'https://x.com/gogrlx' },
-        { icon: 'discord', label: 'Discord', href: 'https://discord.gg/RNsZ3KWjXm' },
-        { icon: 'email', label: 'Email', href: 'mailto:grlx@adatomic.com?subject=Question' },
+        {
+          icon: 'discord',
+          label: 'Discord',
+          href: 'https://discord.gg/RNsZ3KWjXm',
+        },
+        {
+          icon: 'email',
+          label: 'Email',
+          href: 'mailto:grlx@adatomic.com?subject=Question',
+        },
       ],
       sidebar: [
         { label: 'Getting Started', link: '/getting-started' },
@@ -137,6 +156,8 @@ export default defineConfig({
           label: 'Architecture',
           autogenerate: { directory: 'architecture' },
         },
+        { label: 'Cohorts', link: '/cohorts' },
+        { label: 'Managing Sprouts', link: '/sprouts' },
         {
           label: 'Ingredients',
           autogenerate: { directory: 'ingredients' },
@@ -144,6 +165,14 @@ export default defineConfig({
         {
           label: 'Recipes',
           autogenerate: { directory: 'recipes' },
+        },
+        { label: 'SSH', link: '/ssh' },
+        {
+          label: 'Security',
+          items: [
+            { label: 'RBAC', link: '/rbac' },
+            { label: 'Audit Logging', link: '/audit' },
+          ],
         },
         { label: 'Glossary', link: '/glossary' },
       ],

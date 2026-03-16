@@ -1,6 +1,7 @@
 ---
 title: grlx.ingredients.group
 description: An overview of grlx.ingredients.group
+slug: 1.0/ingredients/groups
 ---
 
 The group ingredient handles group operations on sprouts.

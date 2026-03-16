@@ -1,0 +1,30 @@
+{
+  "sidebar": [
+    {
+      "label": "Getting Started",
+      "link": "/getting-started"
+    },
+    {
+      "label": "Architecture",
+      "autogenerate": {
+        "directory": "architecture"
+      }
+    },
+    {
+      "label": "Ingredients",
+      "autogenerate": {
+        "directory": "ingredients"
+      }
+    },
+    {
+      "label": "Recipes",
+      "autogenerate": {
+        "directory": "recipes"
+      }
+    },
+    {
+      "label": "Glossary",
+      "link": "/glossary"
+    }
+  ]
+}

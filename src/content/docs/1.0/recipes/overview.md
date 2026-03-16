@@ -1,6 +1,7 @@
 ---
 title: Overview
 description: An overview of grlx recipes
+slug: 1.0/recipes/overview
 ---
 
 Recipes are the core of grlx functionality, providing a structured way for developers to deploy actions to sprouts. Recipes are a collection of ingredients which can be executed against a sprout. Recipes must be placed on the farmer at `/srv/grlx/recipes/prod` (with support for other non-prod environments in the future). Furthermore, recipes can utilize [Go's builtin templating engine](https://pkg.go.dev/text/template) to provide dynamic functionality for deployment. Below is a simple example of the makeup of a recipe.
@@ -47,6 +48,7 @@ steps:
 ```
 
 It is important to note the requisites listed. This ensures that the step from the include (`super-sprout-steps-completed`) occurs _before_ the `install-super-sprout` step is run.
+
 :::note
 Deployment of recipe steps is non-deterministic unless requisites are provided. If order is important, then requisites **_must_** be specified.
 :::
