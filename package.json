@@ -7,7 +7,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.38.3",
@@ -22,6 +26,7 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.8",
     "@typescript-eslint/parser": "^8.58.1",
     "astro-eslint-parser": "^1.4.0",
     "eslint": "^10.2.0",

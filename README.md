@@ -11,12 +11,15 @@ Live at **[docs.grlx.dev](https://docs.grlx.dev)**
 
 All commands are run from the root of the project:
 
-| Command          | Action                                      |
-| :--------------- | :------------------------------------------ |
-| `bun install`    | Install dependencies                        |
-| `bun run dev`    | Start local dev server at `localhost:4321`   |
-| `bun run build`  | Build production site to `./dist/`           |
-| `bun run preview`| Preview the build locally before deploying   |
+| Command           | Action                                     |
+| :---------------- | :----------------------------------------- |
+| `bun install`     | Install dependencies                       |
+| `bun run dev`     | Start local dev server at `localhost:4321` |
+| `bun run check`   | Run Astro content/type checks              |
+| `bun run lint`    | Run ESLint across the docs site            |
+| `bun run format`  | Check Prettier formatting                  |
+| `bun run build`   | Build production site to `./dist/`         |
+| `bun run preview` | Preview the build locally before deploying |
 
 ## Stack
 

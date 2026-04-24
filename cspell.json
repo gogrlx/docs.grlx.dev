@@ -8,6 +8,6 @@
     "NATS",
     "FARMERBUSPORT",
     "FARMERAPIPORT",
-    "PUBKEYS",
-  ],
+    "PUBKEYS"
+  ]
 }
