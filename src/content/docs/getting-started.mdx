@@ -5,7 +5,7 @@ description: Getting Started with grlx
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
 
-Want to get up and running as quickly as possible to see what all the fuss is about?
+Want to get up and running as quickly as possible?
 Use our bootstrap scripts! Follow our Quick Start to get started!
 
 ## Quick Start
@@ -175,7 +175,7 @@ You will then need to install the farmer on the management server. The farmer is
           - FARMERINTERFACE=0.0.0.0
         volumes:
           - ./local/farmer:/etc/grlx
-          # This is where the farmer whill store its recipes
+          # This is where the farmer will store its recipes
           - ./local/data:/srv/grlx
         ports:
           - "5405:5405"

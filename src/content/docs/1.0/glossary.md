@@ -14,7 +14,7 @@ The sprout is a managed node running the `grlx-sprout` binary. Sprouts receive c
 
 ## CLI (grlx CLI)
 
-The CLI is a tool used to interact with the farmer and manage sprouts. The CLI is used to accept keys from sprouts and `cook` (run) recipes that are hosted on the farmer. The CLI also contains tools to tail the traffic over the NAT bus, test sprout connections, and run arbitrary commands on sprouts.
+The CLI is a tool used to interact with the farmer and manage sprouts. The CLI is used to accept keys from sprouts and `cook` (run) recipes that are hosted on the farmer. The CLI also contains tools to tail the traffic over the NATS bus, test sprout connections, and run arbitrary commands on sprouts.
 
 ## Authentication
 
@@ -34,7 +34,7 @@ Hooks provide a way to fire off webhooks when recipe deployment (cook) starts, f
 
 ## Template Engine
 
-Templating is achieved with [Go’s builtin templating engine](https://pkg.go.dev/text/template). This provides a Jinja-like templating system that hooks into the Farmer and Sprout properties to customize recipes to meet the dynamic needs of your needs.
+Templating is achieved with [Go’s built-in templating engine](https://pkg.go.dev/text/template). This provides a Jinja-like templating system that hooks into Farmer and Sprout properties to customize recipes to meet your needs.
 
 ## Job Enqueuing and Processing
 
