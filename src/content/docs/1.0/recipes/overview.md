@@ -4,7 +4,7 @@ description: An overview of grlx recipes
 slug: 1.0/recipes/overview
 ---
 
-Recipes are the core of grlx functionality, providing a structured way for developers to deploy actions to sprouts. Recipes are a collection of ingredients which can be executed against a sprout. Recipes must be placed on the farmer at `/srv/grlx/recipes/prod` (with support for other non-prod environments in the future). Furthermore, recipes can utilize [Go's builtin templating engine](https://pkg.go.dev/text/template) to provide dynamic functionality for deployment. Below is a simple example of the makeup of a recipe.
+Recipes are the core of grlx functionality, providing a structured way for developers to deploy actions to sprouts. Recipes are a collection of ingredients that can be executed against a sprout. Recipes must be placed on the farmer at `/srv/grlx/recipes/prod` (with support for other non-prod environments in the future). Furthermore, recipes can utilize [Go's built-in templating engine](https://pkg.go.dev/text/template) to provide dynamic functionality for deployment. Below is a simple example of the makeup of a recipe.
 
 ```yaml
 include:
@@ -53,4 +53,4 @@ It is important to note the requisites listed. This ensures that the step from t
 Deployment of recipe steps is non-deterministic unless requisites are provided. If order is important, then requisites **_must_** be specified.
 :::
 
-Once you create a recipe, you can run it using `grlx cook <name> -T <list of sprouts or \* for all sprouts>`. In the case of the example above, I might run something like `grlx cook example -T \*` to run the above on all sprouts. You could also run `grlx cook example -T \* --out json` to get a json output of running this recipe against sprouts.
+Once you create a recipe, you can run it using `grlx cook <name> -T <list of sprouts or \* for all sprouts>`. In the case of the example above, I might run something like `grlx cook example -T \*` to run the above on all sprouts. You could also run `grlx cook example -T \* --out json` to get JSON output for that recipe run.
