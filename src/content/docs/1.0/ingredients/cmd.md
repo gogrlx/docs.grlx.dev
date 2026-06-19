@@ -8,7 +8,7 @@ The cmd ingredient allows you to run arbitrary shell commands against sprouts.
 
 ## **cmd.run**
 
-Runs shell commands against a sprout
+Runs shell commands against a sprout.
 
 #### Parameters
 
@@ -18,7 +18,7 @@ Runs shell commands against a sprout
 | _runas_   | string | false    | user who will run this command (defaults to root)                                        |
 | _path_    | string | false    | the path to the binary, this is prepended to the name                                    |
 | _cwd_     | string | false    | the directory to run this command                                                        |
-| _env_     | list   | false    | environment variables to set should be specified like key1=value1                        |
+| _env_     | list   | false    | environment variables to set, specified as `KEY=value` entries                           |
 | _timeout_ | string | false    | set a timeout for the command using [Go Duration](https://pkg.go.dev/time#ParseDuration) |
 
 ```yaml
