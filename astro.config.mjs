@@ -116,6 +116,7 @@ export default defineConfig({
       ],
       title: 'grlx Docs',
       lastUpdated: true,
+      disable404Route: true,
       description:
         'Documentation for grlx. Fleet configuration management that is low overhead, dependency free, and easy to install.',
       components: {
