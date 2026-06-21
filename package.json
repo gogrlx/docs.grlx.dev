@@ -14,26 +14,26 @@
     "check": "astro check"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.38.3",
+    "@astrojs/starlight": "^0.38.5",
     "@astrojs/starlight-tailwind": "^5.0.0",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/ibm-plex-sans": "^5.2.8",
     "@fontsource/ibm-plex-serif": "^5.2.7",
-    "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.1.5",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.8",
     "sharp": "^0.34.5",
-    "starlight-versions": "^0.8.1",
-    "tailwindcss": "^4.2.2"
+    "starlight-versions": "^0.8.2",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.8",
-    "@typescript-eslint/parser": "^8.58.1",
+    "@astrojs/check": "^0.9.9",
+    "@typescript-eslint/parser": "^8.60.0",
     "astro-eslint-parser": "^1.4.0",
-    "eslint": "^10.2.0",
+    "eslint": "^10.4.0",
     "eslint-plugin-astro": "^1.7.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
+    "prettier-plugin-tailwindcss": "^0.7.4",
     "typescript": "^5.9.3"
   }
 }
