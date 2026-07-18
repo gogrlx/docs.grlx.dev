@@ -113,7 +113,7 @@ Copies content into a given file
 ```yaml
 file.content:
     - name: /srv/nginx/nginx.conf
-    - makdirs: true
+    - makedirs: true
     - text: |
         server {
             listen 8080;
@@ -145,7 +145,7 @@ Handles many directory operations. Ensures that a directory exists with the give
 ```yaml
 file.directory:
     - name: /tmp/item
-    - makdirs: false
+    - makedirs: false
     - user: grlx
     - group: grlx
     - dir_mode: 755
@@ -196,7 +196,7 @@ Manage many properties of a file concurrently, safely
 ```yaml
 file.managed:
     - name: /srv/nginx/nginx.conf
-    - makdirs: true
+    - makedirs: true
     - user: pi
     - group: wheel
     - text: |
