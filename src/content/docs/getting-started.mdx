@@ -239,6 +239,26 @@ grlx -T \* cmd run --out json -- uname -a
 
 ---
 
+## Troubleshooting the quick start
+
+If the CLI or sprout cannot connect to the farmer, verify these items first:
+
+- The `FARMERINTERFACE` value points to an address reachable from the machine running the command.
+- The API port is reachable from the CLI host. The default systemd and Docker Compose port is `5405`; the k3s NodePort example uses `30405`.
+- The bus port is reachable from sprout hosts. The default systemd and Docker Compose port is `5406`; the k3s NodePort example uses `30406`.
+- The farmer certificate hosts include the same DNS name or IP address used by `FARMERINTERFACE`.
+
+For a quick network check, run these commands from the CLI host and from a sprout host:
+
+```bash
+nc -vz FARMERINTERFACE 5405
+nc -vz FARMERINTERFACE 5406
+```
+
+Use ports `30405` and `30406` instead if you installed the farmer with the k3s NodePort example.
+
+---
+
 #### Uninstalling
 
 If you ever need to uninstall the `grlx-farmer`, you can do so with the following commands:
