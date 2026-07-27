@@ -10,3 +10,8 @@
 table .sl-badge {
   font-size: 0.75em;
 }
+
+.hero img {
+  object-fit: contain;
+  max-height: none;
+}
