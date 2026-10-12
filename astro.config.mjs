@@ -155,17 +155,17 @@ export default defineConfig({
         { label: 'Getting Started', link: '/getting-started' },
         {
           label: 'Architecture',
-          autogenerate: { directory: 'architecture' },
+          items: [{ autogenerate: { directory: 'architecture' } }],
         },
         { label: 'Cohorts', link: '/cohorts' },
         { label: 'Managing Sprouts', link: '/sprouts' },
         {
           label: 'Ingredients',
-          autogenerate: { directory: 'ingredients' },
+          items: [{ autogenerate: { directory: 'ingredients' } }],
         },
         {
           label: 'Recipes',
-          autogenerate: { directory: 'recipes' },
+          items: [{ autogenerate: { directory: 'recipes' } }],
         },
         { label: 'SSH', link: '/ssh' },
         {
