@@ -259,13 +259,16 @@ Use ports `30405` and `30406` instead if you installed the farmer with the k3s N
 
 ---
 
-#### Uninstalling
+## Uninstalling
 
-If you ever need to uninstall the `grlx-farmer`, you can do so with the following commands:
+If you ever need to uninstall the `grlx-farmer`, run the farmer bootstrap script with `UNINSTALL=true`:
+
 ```bash
 curl -L https://bootstrap.grlx.dev/latest/farmer | UNINSTALL=true bash
 ```
-Or the `grlx-sprout`:
+
+To uninstall the `grlx-sprout`, run the sprout bootstrap script with `UNINSTALL=true`:
+
 ```bash
 curl -L https://bootstrap.grlx.dev/latest/sprout | UNINSTALL=true bash
 ```
