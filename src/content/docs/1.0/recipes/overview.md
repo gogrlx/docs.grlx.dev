@@ -10,7 +10,7 @@ Recipes are the core of grlx functionality, providing a structured way for devel
 include:
   - .super-sprout-steps
 steps:
-{{ if eq (props hostname) super-sprout }}
+{{ if eq (props "hostname") "super-sprout" }}
   install super-sprout:
     file.touch:
       - name: ~/super-sprout-config
@@ -23,7 +23,7 @@ steps:
 {{ end }}
 ```
 
-In this example, an include is created for a `super-sprout-steps.grlx` file. This file would contain a list of steps with a final step `grlx-sprout-steps-completed`. Next we have our list of steps, bounded by Go templates. This template checks the hostname of the sprout and renders the steps to send to the farmer. In this case, if the sprout's hostname is `super-sprout`, then it will render a template that looks like this:
+In this example, an include is created for a `super-sprout-steps.grlx` file. This file would contain a list of steps with a final step `super-sprout-steps-completed`. Next we have our list of steps, bounded by Go templates. This template checks the hostname of the sprout and renders the steps to send to the farmer. In this case, if the sprout's hostname is `super-sprout`, then it will render a template that looks like this:
 
 ```yaml
 include:
@@ -47,7 +47,7 @@ steps:
       - name: ~/normal-sprout-config
 ```
 
-It is important to note the requisites listed. This ensures that the step from the include (`super-sprout-steps-completed`) occurs _before_ the `install-super-sprout` step is run.
+It is important to note the requisites listed. This ensures that the step from the include (`super-sprout-steps-completed`) occurs _before_ the `install super-sprout` step is run.
 
 :::note
 Deployment of recipe steps is non-deterministic unless requisites are provided. If order is important, then requisites **_must_** be specified.
