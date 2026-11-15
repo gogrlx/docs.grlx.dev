@@ -128,6 +128,8 @@ file.content:
 
 Handles many directory operations. Ensures that a directory exists with the given permissions.
 
+Quote `dir_mode` and `file_mode` values (for example, `"755"` or `"644"`). grlx expects octal permission strings; unquoted YAML numbers are not applied as modes.
+
 #### Parameters
 
 | parameter | type | required | description |
@@ -148,7 +150,7 @@ file.directory:
     - makedirs: false
     - user: grlx
     - group: grlx
-    - dir_mode: 755
+    - dir_mode: "755"
     - recurse: false
 ```
 
